@@ -1,0 +1,767 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		104CAA7027F7B18700787BC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA6F27F7B18700787BC1 /* AppDelegate.swift */; };
+		104CAA7227F7B18700787BC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA7127F7B18700787BC1 /* SceneDelegate.swift */; };
+		104CAA7427F7B18700787BC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA7327F7B18700787BC1 /* ViewController.swift */; };
+		104CAA7727F7B18700787BC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 104CAA7527F7B18700787BC1 /* Main.storyboard */; };
+		104CAA7927F7B18900787BC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 104CAA7827F7B18900787BC1 /* Assets.xcassets */; };
+		104CAA7C27F7B18900787BC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 104CAA7A27F7B18900787BC1 /* LaunchScreen.storyboard */; };
+		104CAA8727F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA8627F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift */; };
+		104CAA9127F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA9027F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift */; };
+		104CAA9327F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA9227F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift */; };
+		1063849627F80C1400EDD380 /* fallback_configuration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1063849527F80C1400EDD380 /* fallback_configuration.json */; };
+		51B949D8C8A18A8A32F8090E /* libPods-LiveRamp ATS SDK - Simple DemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC73901678E28CEB4EAB5AD /* libPods-LiveRamp ATS SDK - Simple DemoTests.a */; };
+		A4B7C86F4496EB3C8B981C14 /* libPods-LiveRamp ATS SDK - Simple Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3D2C3C9DC347C60CD66269 /* libPods-LiveRamp ATS SDK - Simple Demo.a */; };
+		F06624B02163D2094C322C51 /* libPods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D62E3D063A3E4C5F20D5F8 /* libPods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		104CAA8327F7B18900787BC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 104CAA6427F7B18700787BC1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 104CAA6B27F7B18700787BC1;
+			remoteInfo = "LiveRamp ATS SDK - Simple Demo";
+		};
+		104CAA8D27F7B18900787BC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 104CAA6427F7B18700787BC1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 104CAA6B27F7B18700787BC1;
+			remoteInfo = "LiveRamp ATS SDK - Simple Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		027A3E79A9BC949E697CC47E /* Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig"; sourceTree = "<group>"; };
+		104CAA6C27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		104CAA6F27F7B18700787BC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		104CAA7127F7B18700787BC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		104CAA7327F7B18700787BC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		104CAA7627F7B18700787BC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		104CAA7827F7B18900787BC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		104CAA7B27F7B18900787BC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		104CAA7D27F7B18900787BC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		104CAA8227F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		104CAA8627F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRamp_ATS_SDK___Simple_DemoTests.swift"; sourceTree = "<group>"; };
+		104CAA8C27F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		104CAA9027F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRamp_ATS_SDK___Simple_DemoUITests.swift"; sourceTree = "<group>"; };
+		104CAA9227F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift"; sourceTree = "<group>"; };
+		1063849527F80C1400EDD380 /* fallback_configuration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fallback_configuration.json; sourceTree = "<group>"; };
+		1D3D2C3C9DC347C60CD66269 /* libPods-LiveRamp ATS SDK - Simple Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiveRamp ATS SDK - Simple Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CC73901678E28CEB4EAB5AD /* libPods-LiveRamp ATS SDK - Simple DemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiveRamp ATS SDK - Simple DemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		799405DCD311FA5F9E19F390 /* Pods-LiveRamp ATS SDK - Simple Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple Demo.debug.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		AC230318D3571ADD2258A982 /* Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.release.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B46759C6EF3489AAE1DE8A5A /* Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D0795680B48829CAD3EA2E0C /* Pods-LiveRamp ATS SDK - Simple DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple DemoTests.release.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple DemoTests/Pods-LiveRamp ATS SDK - Simple DemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		F0337B9EA379012D73064B2B /* Pods-LiveRamp ATS SDK - Simple DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple DemoTests/Pods-LiveRamp ATS SDK - Simple DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F9D62E3D063A3E4C5F20D5F8 /* libPods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		104CAA6927F7B18700787BC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B7C86F4496EB3C8B981C14 /* libPods-LiveRamp ATS SDK - Simple Demo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		104CAA7F27F7B18900787BC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51B949D8C8A18A8A32F8090E /* libPods-LiveRamp ATS SDK - Simple DemoTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		104CAA8927F7B18900787BC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F06624B02163D2094C322C51 /* libPods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		104CAA6327F7B18700787BC1 = {
+			isa = PBXGroup;
+			children = (
+				104CAA6E27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo */,
+				104CAA8527F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoTests */,
+				104CAA8F27F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoUITests */,
+				104CAA6D27F7B18700787BC1 /* Products */,
+				DA37321A323F8DA54933B553 /* Pods */,
+				C2526C93474CA397B6DF2AD9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		104CAA6D27F7B18700787BC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				104CAA6C27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo.app */,
+				104CAA8227F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoTests.xctest */,
+				104CAA8C27F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		104CAA6E27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo */ = {
+			isa = PBXGroup;
+			children = (
+				1063849527F80C1400EDD380 /* fallback_configuration.json */,
+				104CAA6F27F7B18700787BC1 /* AppDelegate.swift */,
+				104CAA7127F7B18700787BC1 /* SceneDelegate.swift */,
+				104CAA7327F7B18700787BC1 /* ViewController.swift */,
+				104CAA7527F7B18700787BC1 /* Main.storyboard */,
+				104CAA7827F7B18900787BC1 /* Assets.xcassets */,
+				104CAA7A27F7B18900787BC1 /* LaunchScreen.storyboard */,
+				104CAA7D27F7B18900787BC1 /* Info.plist */,
+			);
+			path = "LiveRamp ATS SDK - Simple Demo";
+			sourceTree = "<group>";
+		};
+		104CAA8527F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				104CAA8627F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift */,
+			);
+			path = "LiveRamp ATS SDK - Simple DemoTests";
+			sourceTree = "<group>";
+		};
+		104CAA8F27F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				104CAA9027F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift */,
+				104CAA9227F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift */,
+			);
+			path = "LiveRamp ATS SDK - Simple DemoUITests";
+			sourceTree = "<group>";
+		};
+		C2526C93474CA397B6DF2AD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D3D2C3C9DC347C60CD66269 /* libPods-LiveRamp ATS SDK - Simple Demo.a */,
+				F9D62E3D063A3E4C5F20D5F8 /* libPods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.a */,
+				6CC73901678E28CEB4EAB5AD /* libPods-LiveRamp ATS SDK - Simple DemoTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA37321A323F8DA54933B553 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				799405DCD311FA5F9E19F390 /* Pods-LiveRamp ATS SDK - Simple Demo.debug.xcconfig */,
+				027A3E79A9BC949E697CC47E /* Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig */,
+				B46759C6EF3489AAE1DE8A5A /* Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.debug.xcconfig */,
+				AC230318D3571ADD2258A982 /* Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.release.xcconfig */,
+				F0337B9EA379012D73064B2B /* Pods-LiveRamp ATS SDK - Simple DemoTests.debug.xcconfig */,
+				D0795680B48829CAD3EA2E0C /* Pods-LiveRamp ATS SDK - Simple DemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		104CAA6B27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 104CAA9627F7B18A00787BC1 /* Build configuration list for PBXNativeTarget "LiveRamp ATS SDK - Simple Demo" */;
+			buildPhases = (
+				BD0AC65F31D2CFBD26DB965B /* [CP] Check Pods Manifest.lock */,
+				104CAA6827F7B18700787BC1 /* Sources */,
+				104CAA6927F7B18700787BC1 /* Frameworks */,
+				104CAA6A27F7B18700787BC1 /* Resources */,
+				F04F9FB55466275DA34B47A3 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LiveRamp ATS SDK - Simple Demo";
+			productName = "LiveRamp ATS SDK - Simple Demo";
+			productReference = 104CAA6C27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		104CAA8127F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 104CAA9927F7B18A00787BC1 /* Build configuration list for PBXNativeTarget "LiveRamp ATS SDK - Simple DemoTests" */;
+			buildPhases = (
+				D8EF9CD162181CD428B2DF7C /* [CP] Check Pods Manifest.lock */,
+				104CAA7E27F7B18900787BC1 /* Sources */,
+				104CAA7F27F7B18900787BC1 /* Frameworks */,
+				104CAA8027F7B18900787BC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				104CAA8427F7B18900787BC1 /* PBXTargetDependency */,
+			);
+			name = "LiveRamp ATS SDK - Simple DemoTests";
+			productName = "LiveRamp ATS SDK - Simple DemoTests";
+			productReference = 104CAA8227F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		104CAA8B27F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 104CAA9C27F7B18A00787BC1 /* Build configuration list for PBXNativeTarget "LiveRamp ATS SDK - Simple DemoUITests" */;
+			buildPhases = (
+				6B2534FCE458FC3F4FAA3B10 /* [CP] Check Pods Manifest.lock */,
+				104CAA8827F7B18900787BC1 /* Sources */,
+				104CAA8927F7B18900787BC1 /* Frameworks */,
+				104CAA8A27F7B18900787BC1 /* Resources */,
+				EB75B78F46F327F5A161FC2D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				104CAA8E27F7B18900787BC1 /* PBXTargetDependency */,
+			);
+			name = "LiveRamp ATS SDK - Simple DemoUITests";
+			productName = "LiveRamp ATS SDK - Simple DemoUITests";
+			productReference = 104CAA8C27F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		104CAA6427F7B18700787BC1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					104CAA6B27F7B18700787BC1 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					104CAA8127F7B18900787BC1 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 104CAA6B27F7B18700787BC1;
+					};
+					104CAA8B27F7B18900787BC1 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 104CAA6B27F7B18700787BC1;
+					};
+				};
+			};
+			buildConfigurationList = 104CAA6727F7B18700787BC1 /* Build configuration list for PBXProject "LiveRamp ATS SDK - Simple Demo" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 104CAA6327F7B18700787BC1;
+			productRefGroup = 104CAA6D27F7B18700787BC1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				104CAA6B27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo */,
+				104CAA8127F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoTests */,
+				104CAA8B27F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		104CAA6A27F7B18700787BC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				104CAA7C27F7B18900787BC1 /* LaunchScreen.storyboard in Resources */,
+				104CAA7927F7B18900787BC1 /* Assets.xcassets in Resources */,
+				1063849627F80C1400EDD380 /* fallback_configuration.json in Resources */,
+				104CAA7727F7B18700787BC1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		104CAA8027F7B18900787BC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		104CAA8A27F7B18900787BC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6B2534FCE458FC3F4FAA3B10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD0AC65F31D2CFBD26DB965B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiveRamp ATS SDK - Simple Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8EF9CD162181CD428B2DF7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiveRamp ATS SDK - Simple DemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB75B78F46F327F5A161FC2D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F04F9FB55466275DA34B47A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		104CAA6827F7B18700787BC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				104CAA7427F7B18700787BC1 /* ViewController.swift in Sources */,
+				104CAA7027F7B18700787BC1 /* AppDelegate.swift in Sources */,
+				104CAA7227F7B18700787BC1 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		104CAA7E27F7B18900787BC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				104CAA8727F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		104CAA8827F7B18900787BC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				104CAA9127F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift in Sources */,
+				104CAA9327F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		104CAA8427F7B18900787BC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 104CAA6B27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo */;
+			targetProxy = 104CAA8327F7B18900787BC1 /* PBXContainerItemProxy */;
+		};
+		104CAA8E27F7B18900787BC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 104CAA6B27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo */;
+			targetProxy = 104CAA8D27F7B18900787BC1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		104CAA7527F7B18700787BC1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				104CAA7627F7B18700787BC1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		104CAA7A27F7B18900787BC1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				104CAA7B27F7B18900787BC1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		104CAA9427F7B18A00787BC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		104CAA9527F7B18A00787BC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		104CAA9727F7B18A00787BC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 799405DCD311FA5F9E19F390 /* Pods-LiveRamp ATS SDK - Simple Demo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3LN8244SS8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LiveRamp ATS SDK - Simple Demo/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liveramp.ats.sampleapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		104CAA9827F7B18A00787BC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 027A3E79A9BC949E697CC47E /* Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3LN8244SS8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LiveRamp ATS SDK - Simple Demo/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liveramp.ats.sampleapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		104CAA9A27F7B18A00787BC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0337B9EA379012D73064B2B /* Pods-LiveRamp ATS SDK - Simple DemoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 74R7MMTVVB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveramp.ats.simpledemo.LiveRamp-ATS-SDK---Simple-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiveRamp ATS SDK - Simple Demo.app/LiveRamp ATS SDK - Simple Demo";
+			};
+			name = Debug;
+		};
+		104CAA9B27F7B18A00787BC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0795680B48829CAD3EA2E0C /* Pods-LiveRamp ATS SDK - Simple DemoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 74R7MMTVVB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveramp.ats.simpledemo.LiveRamp-ATS-SDK---Simple-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiveRamp ATS SDK - Simple Demo.app/LiveRamp ATS SDK - Simple Demo";
+			};
+			name = Release;
+		};
+		104CAA9D27F7B18A00787BC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B46759C6EF3489AAE1DE8A5A /* Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 74R7MMTVVB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveramp.ats.simpledemo.LiveRamp-ATS-SDK---Simple-DemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "LiveRamp ATS SDK - Simple Demo";
+			};
+			name = Debug;
+		};
+		104CAA9E27F7B18A00787BC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC230318D3571ADD2258A982 /* Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 74R7MMTVVB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveramp.ats.simpledemo.LiveRamp-ATS-SDK---Simple-DemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "LiveRamp ATS SDK - Simple Demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		104CAA6727F7B18700787BC1 /* Build configuration list for PBXProject "LiveRamp ATS SDK - Simple Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				104CAA9427F7B18A00787BC1 /* Debug */,
+				104CAA9527F7B18A00787BC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		104CAA9627F7B18A00787BC1 /* Build configuration list for PBXNativeTarget "LiveRamp ATS SDK - Simple Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				104CAA9727F7B18A00787BC1 /* Debug */,
+				104CAA9827F7B18A00787BC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		104CAA9927F7B18A00787BC1 /* Build configuration list for PBXNativeTarget "LiveRamp ATS SDK - Simple DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				104CAA9A27F7B18A00787BC1 /* Debug */,
+				104CAA9B27F7B18A00787BC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		104CAA9C27F7B18A00787BC1 /* Build configuration list for PBXNativeTarget "LiveRamp ATS SDK - Simple DemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				104CAA9D27F7B18A00787BC1 /* Debug */,
+				104CAA9E27F7B18A00787BC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 104CAA6427F7B18700787BC1 /* Project object */;
+}
