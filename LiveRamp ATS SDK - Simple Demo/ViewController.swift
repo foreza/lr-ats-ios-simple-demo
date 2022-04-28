@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_envelopeValue: UILabel!
     @IBOutlet weak var label_emailValue: UITextField!
     
+    var myEnvelope = ""
+    
     // TODO: Replace the init appID with your own app ID before you go into production
     let appId = "24f06669-7cc1-4650-b6e3-0ef1ad9d8346"
     
@@ -63,6 +65,7 @@ class ViewController: UIViewController {
         
         // Provide appId and fallback configuration (fallback will be removed in a future version_
         let lrAtsConfiguration = LRAtsConfiguration(appId: appId, fallbackConfiguration: fallbackConfiguration)
+        
 
         LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
             if success {
@@ -81,6 +84,7 @@ class ViewController: UIViewController {
     func fetchEnvelopeForEmail(email: String) {
         
         let lrEmailIdentifier = LREmailIdentifier(email)
+        
         LRAts.shared.getEnvelope(lrEmailIdentifier) { result, error in
             guard let envelope = result?.envelope else {
                 let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
@@ -88,11 +92,45 @@ class ViewController: UIViewController {
                 print(errString)
                 return
             }
-            self.updateEnvelopeString(envelopeString: "\(envelope)")
+            self.myEnvelope = "\(envelope)"
+            self.updateEnvelopeString(envelopeString: self.myEnvelope)
+            
+            self.fireECSTForEnvelopeString(eCSTPid: "712138", envelopeStr: self.myEnvelope, refererURL: "https://samplerefererurl.com")
+            
             self.updateErrMessage(errMsg: "");
             print("Received envelope: \(envelope)")
-            
         }
+        
+    }
+    
+    
+    
+    func fireECSTForEnvelopeString(eCSTPid: String, envelopeStr: String, refererURL: String) {
+        
+        let json: [String: Any] = ["category": "nocookies"] // sample pdata object
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        let urlString = "https://di.rlcdn.com/api/segment?pid=" + eCSTPid + "&it=19&iv=" + envelopeStr;
+
+        var request = URLRequest(url: URL(string: urlString)!)
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(refererURL, forHTTPHeaderField: "Referer")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+
+        task.resume()
         
     }
     
