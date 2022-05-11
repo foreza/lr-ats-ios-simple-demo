@@ -24,15 +24,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Credits for keyboard hiding: https://www.cometchat.com/tutorials/how-to-dismiss-ios-keyboard-swift
-        initializeHideKeyboard();                   // It's 2022. Yet, here we are still.
-        updateSDKVersionLabel(sdkver: "v1.0.5");    // This (very important) API will be available in a future version.
+        initializeHideKeyboard();            // It's 2022. Yet, here we are still.
+        updateSDKVersionLabel();             // This (very important) API will be available in a future version.
         updateSDKInitStatus(isInitialized: false);
         updateErrMessage(errMsg: "");
         
-        
-        
-        setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
+        // setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
     }
     
     
@@ -54,15 +51,19 @@ class ViewController: UIViewController {
         UserDefaults.standard.set(ccpaString, forKey:"IABUSPrivacy_String");
     }
     
+    
     func initializeATSSDK() {
         
-        // Sample test file available here: https://gist.github.com/jasonc-lr/092f50c425b898fc51ae6b55b765af2a
-        guard let fallbackConfigPath = Bundle.main.path(forResource: "fallback_configuration", ofType: "json"),
-        let jsonData = try? String(contentsOfFile: fallbackConfigPath).data(using: .utf8),
-        let fallbackConfiguration = try? JSONDecoder().decode(LRConfiguration.self, from: jsonData) else { return}
+        // Example workflow for how you determine whether you invoke hasConsentForNoLegislation
+        let doNotRequireCCPACheckInUS = true;
+        let supportOtherGeos = true;                // For handling initialization in a country that isn't US or EU
         
-        // Provide appId and fallback configuration (fallback will be removed in a future version_
-        let lrAtsConfiguration = LRAtsConfiguration(appId: appId, fallbackConfiguration: fallbackConfiguration)
+        if (doNotRequireCCPACheckInUS || supportOtherGeos) {
+            LRAts.shared.hasConsentForNoLegislation = true;
+        }
+     
+        // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
+        let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false);
 
         LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
             if success {
@@ -140,9 +141,9 @@ class ViewController: UIViewController {
     }
             
     
-    func updateSDKVersionLabel(sdkver: String){
+    func updateSDKVersionLabel(){
         DispatchQueue.main.async {
-            self.label_sdkversion.text = sdkver;
+            self.label_sdkversion.text = LRAts.sdkVersion;
         }
     }
     
@@ -167,14 +168,15 @@ class ViewController: UIViewController {
     
     
     func initializeHideKeyboard(){
+        // Credits for keyboard hiding: https://www.cometchat.com/tutorials/how-to-dismiss-ios-keyboard-swift
         let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action: #selector(dismissMyKeyboard))
         view.addGestureRecognizer(tap)
      }
     
+    
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
      }
-
 
 }
 
