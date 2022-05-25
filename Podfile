@@ -4,7 +4,7 @@
 target 'LiveRamp ATS SDK - Simple Demo' do
   # Comment the next line if you don't want to use dynamic frameworks
   # use_frameworks!
-  pod 'LRAtsSDK', '1.0.0-beta5'
+  pod 'LRAtsSDK', '1.1.0'
 
 
   # Pods for LiveRamp ATS SDK - Simple Demo
