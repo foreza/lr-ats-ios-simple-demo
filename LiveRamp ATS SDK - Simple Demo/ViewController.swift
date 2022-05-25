@@ -24,14 +24,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeHideKeyboard();            // It's 2022. Yet, here we are still.
-        updateSDKVersionLabel();             // This (very important) API will be available in a future version.
-        updateSDKInitStatus(isInitialized: false);
-        updateErrMessage(errMsg: "");
+        initializeHideKeyboard()            // It's 2022. Yet, here we are still.
+        updateSDKVersionLabel()             // This (very important) API will be available in a future version.
+        updateSDKInitStatus(isInitialized: false)
+        updateErrMessage(errMsg: "")
         
         
-        // initializeATSSDK();
-        // setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
+        // initializeATSSDK()
+        // setTestConsent()           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
     }
     
     
@@ -50,28 +50,28 @@ class ViewController: UIViewController {
         UserDefaults.standard.set(expectedVendorsConsent, forKey: "IABTCF_VendorConsents")
         
         // Required for CCPA if US
-        UserDefaults.standard.set(ccpaString, forKey:"IABUSPrivacy_String");
+        UserDefaults.standard.set(ccpaString, forKey:"IABUSPrivacy_String")
     }
     
     
     func initializeATSSDK() {
         
         // Example workflow for how you determine whether you invoke hasConsentForNoLegislation
-        let doNotRequireCCPACheckInUS = true;
-        let supportOtherGeos = true;                // For handling initialization in a country that isn't US or EU
+        let doNotRequireCCPACheckInUS = true
+        let supportOtherGeos = true                // For handling initialization in a country that isn't US or EU
         
         if (doNotRequireCCPACheckInUS || supportOtherGeos) {
-            LRAts.shared.hasConsentForNoLegislation = true;
+            LRAts.shared.hasConsentForNoLegislation = true
         }
      
         // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
-        let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false);
+        let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false)
 
             LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
             if success {
                 print("LiveRamp ATS SDK is Ready!")
                 self.updateSDKInitStatus(isInitialized: true)
-                self.updateErrMessage(errMsg: "");
+                self.updateErrMessage(errMsg: "")
             } else {
                 let errString = error?.localizedDescription
                 print("Failed to init SDK with error", errString ?? "")
@@ -91,12 +91,17 @@ class ViewController: UIViewController {
                 let errString = "Couldn't retrieve envelope. Error: \(error)"
                 self.updateErrMessage(errMsg: errString)
                 print(errString)
-                return;
+                return
             }
             
-            let envelope = result?.envelope
+            guard let envelope = result?.envelope else {
+                // We should never reach here.
+                self.updateErrMessage(errMsg: "Unable to unwrap envelope")
+                return
+            }
+                       
             self.updateEnvelopeString(envelopeString: "\(envelope)")
-            self.updateErrMessage(errMsg: "");
+            self.updateErrMessage(errMsg: "")
             print("Received envelope: \(envelope)")
         }
         
@@ -106,13 +111,13 @@ class ViewController: UIViewController {
     
     // Other misc code to make this application run
     @IBAction func touchInitSDK(_ sender: Any) {
-        self.initializeATSSDK();
+        self.initializeATSSDK()
     }
     
     
     @IBAction func touchFetchEnvelope(_ sender: Any) {
-        let emailValue = label_emailValue.text;
-        fetchEnvelopeForEmail(email: emailValue ?? "test@liveramp.com");
+        let emailValue = label_emailValue.text
+        fetchEnvelopeForEmail(email: emailValue ?? "test@liveramp.com")
     }
     
     
@@ -136,10 +141,10 @@ class ViewController: UIViewController {
     func updateErrMessage(errMsg: String) {
         DispatchQueue.main.async {
             if (errMsg == "") {
-                self.label_errMessage.isHidden = true;
+                self.label_errMessage.isHidden = true
             } else {
-                self.label_errMessage.isHidden = false;
-                self.label_errMessage.text = errMsg;
+                self.label_errMessage.isHidden = false
+                self.label_errMessage.text = errMsg
             }
         }
 
@@ -148,14 +153,14 @@ class ViewController: UIViewController {
     
     func updateSDKVersionLabel(){
         DispatchQueue.main.async {
-            self.label_sdkversion.text = LRAts.sdkVersion;
+            self.label_sdkversion.text = LRAts.sdkVersion
         }
     }
     
     
     func updateEnvelopeString(envelopeString: String) {
         DispatchQueue.main.async {
-            self.label_envelopeValue.self.text = envelopeString;
+            self.label_envelopeValue.self.text = envelopeString
         }
     }
     
