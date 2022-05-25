@@ -29,6 +29,8 @@ class ViewController: UIViewController {
         updateSDKInitStatus(isInitialized: false);
         updateErrMessage(errMsg: "");
         
+        
+        // initializeATSSDK();
         // setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
     }
     
@@ -65,7 +67,7 @@ class ViewController: UIViewController {
         // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
         let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false);
 
-        LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
+            LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
             if success {
                 print("LiveRamp ATS SDK is Ready!")
                 self.updateSDKInitStatus(isInitialized: true)
@@ -76,6 +78,7 @@ class ViewController: UIViewController {
                 self.updateErrMessage(errMsg: errString ?? "Unknown Error")
             }
         }
+    
     }
     
     
@@ -98,10 +101,10 @@ class ViewController: UIViewController {
     }
     
     
-
+    
     // Other misc code to make this application run
     @IBAction func touchInitSDK(_ sender: Any) {
-        initializeATSSDK();
+        self.initializeATSSDK();
     }
     
     
