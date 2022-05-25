@@ -20,8 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_emailValue: UITextField!
     
     // TODO: Replace the init appID with your own app ID before you go into production
-    // let appId = "24f06669-7cc1-4650-b6e3-0ef1ad9d8346"
-    let appId = "1be7d320-3a62-4170-8633-30b38114d8fc"
+    let appId = "24f06669-7cc1-4650-b6e3-0ef1ad9d8346"
     
     override func viewDidLoad() {
         super.viewDidLoad()
