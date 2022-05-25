@@ -20,7 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_emailValue: UITextField!
     
     // TODO: Replace the init appID with your own app ID before you go into production
-    let appId = "24f06669-7cc1-4650-b6e3-0ef1ad9d8346"
+    // let appId = "24f06669-7cc1-4650-b6e3-0ef1ad9d8346"
+    let appId = "1be7d320-3a62-4170-8633-30b38114d8fc"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,16 +87,18 @@ class ViewController: UIViewController {
         
         let lrEmailIdentifier = LREmailIdentifier(email)
         LRAts.shared.getEnvelope(lrEmailIdentifier) { result, error in
-            guard let envelope = result?.envelope else {
-                let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
+            
+            if (error != nil) {
+                let errString = "Couldn't retrieve envelope. Error: \(error)"
                 self.updateErrMessage(errMsg: errString)
                 print(errString)
-                return
+                return;
             }
+            
+            let envelope = result?.envelope
             self.updateEnvelopeString(envelopeString: "\(envelope)")
             self.updateErrMessage(errMsg: "");
             print("Received envelope: \(envelope)")
-            
         }
         
     }
