@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_emailValue: UITextField!
     
     // TODO: Replace the init appID with your own app ID before you go into production
-    let appId = "24f06669-7cc1-4650-b6e3-0ef1ad9d8346"
+    let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         
         
         // initializeATSSDK();
-        // setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
+        setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
     }
     
     
@@ -45,9 +45,9 @@ class ViewController: UIViewController {
         let ccpaString = "1YNN"
         
         // Required for GDPR if EU
-        UserDefaults.standard.set(tcfString, forKey: "IABTCF_TCString")
-        UserDefaults.standard.set(expectedPurposesConsent, forKey: "IABTCF_PurposeConsents")
-        UserDefaults.standard.set(expectedVendorsConsent, forKey: "IABTCF_VendorConsents")
+        // UserDefaults.standard.set(tcfString, forKey: "IABTCF_TCString")
+        // UserDefaults.standard.set(expectedPurposesConsent, forKey: "IABTCF_PurposeConsents")
+        // UserDefaults.standard.set(expectedVendorsConsent, forKey: "IABTCF_VendorConsents")
         
         // Required for CCPA if US
         UserDefaults.standard.set(ccpaString, forKey:"IABUSPrivacy_String");
@@ -57,11 +57,11 @@ class ViewController: UIViewController {
     func initializeATSSDK() {
         
         // Example workflow for how you determine whether you invoke hasConsentForNoLegislation
-        let doNotRequireCCPACheckInUS = true;
+        let doNotRequireCCPACheckInUS = false;
         let supportOtherGeos = true;                // For handling initialization in a country that isn't US or EU
         
         if (doNotRequireCCPACheckInUS || supportOtherGeos) {
-            LRAts.shared.hasConsentForNoLegislation = true;
+            // LRAts.shared.hasConsentForNoLegislation = true;
         }
      
         // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
