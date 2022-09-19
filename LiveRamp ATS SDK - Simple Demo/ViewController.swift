@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AppTrackingTransparency
 import LRAtsSDK
 
 class ViewController: UIViewController {
@@ -20,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_emailValue: UITextField!
     
     // TODO: Replace the init appID with your own app ID before you go into production
-    let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
+     let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,39 @@ class ViewController: UIViewController {
         updateSDKInitStatus(isInitialized: false);
         updateErrMessage(errMsg: "");
         
-        
         // initializeATSSDK();
         setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
     }
+    
+    
+    
+    // We require ATT in order to operate!
+    // No ATT = No RampID envelopes!
+    func checkATTF(){
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                   switch status {
+                   case .authorized:
+                       // ATS can function!
+                       print("Authorized")
+                   case .denied:
+                       // NO ATS calls can be made!
+                       print("Denied")
+                   case .notDetermined:
+                       // NO ATS calls can be made!
+                       print("Not Determined")
+                   case .restricted:
+                       // NO ATS calls can be made!
+                       print("Restricted")
+                   @unknown default:
+                       // NO ATS calls can be made!
+                       print("Unknown")
+                   }
+               }
+
+        }
+    }
+ 
     
     
     // Strictly TEST consent values - to be only used for testing!
@@ -55,12 +85,15 @@ class ViewController: UIViewController {
     
     
     func initializeATSSDK() {
+            
+        self.checkATTF()
         
         // Example workflow for how you determine whether you invoke hasConsentForNoLegislation
         let doNotRequireCCPACheckInUS = false;
         let supportOtherGeos = true;                // For handling initialization in a country that isn't US or EU
         
         if (doNotRequireCCPACheckInUS || supportOtherGeos) {
+            LRAts.shared.hasConsentForNoLegislation = true
             // LRAts.shared.hasConsentForNoLegislation = true;
         }
      
@@ -86,6 +119,11 @@ class ViewController: UIViewController {
         
         let lrEmailIdentifier = LREmailIdentifier(email)
         LRAts.shared.getEnvelope(lrEmailIdentifier) { result, error in
+            
+            if (error != nil) {
+                let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
+                self.updateErrMessage(errMsg: errString)
+            }
             guard let envelope = result?.envelope else {
                 let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
                 self.updateErrMessage(errMsg: errString)
