@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Please, I need to feed my family. Take mercy. This is what I need to pay the bills. Please. Pretty Please.</string>
+	<string>LiveRamp's ATS SDK requires ATT consent! Work with your team to construct a compelling pre-prompt message.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
