@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1043EC57286E3DB300455EE0 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1043EC56286E3DB300455EE0 /* AppTrackingTransparency.framework */; };
 		104CAA7027F7B18700787BC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA6F27F7B18700787BC1 /* AppDelegate.swift */; };
 		104CAA7227F7B18700787BC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA7127F7B18700787BC1 /* SceneDelegate.swift */; };
 		104CAA7427F7B18700787BC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA7327F7B18700787BC1 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		027A3E79A9BC949E697CC47E /* Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig"; sourceTree = "<group>"; };
+		1043EC56286E3DB300455EE0 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		104CAA6C27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		104CAA6F27F7B18700787BC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		104CAA7127F7B18700787BC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4B7C86F4496EB3C8B981C14 /* libPods-LiveRamp ATS SDK - Simple Demo.a in Frameworks */,
+				1043EC57286E3DB300455EE0 /* AppTrackingTransparency.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +150,7 @@
 		C2526C93474CA397B6DF2AD9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1043EC56286E3DB300455EE0 /* AppTrackingTransparency.framework */,
 				1D3D2C3C9DC347C60CD66269 /* libPods-LiveRamp ATS SDK - Simple Demo.a */,
 				F9D62E3D063A3E4C5F20D5F8 /* libPods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.a */,
 				6CC73901678E28CEB4EAB5AD /* libPods-LiveRamp ATS SDK - Simple DemoTests.a */,
