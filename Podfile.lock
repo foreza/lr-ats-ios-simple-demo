@@ -1,16 +1,57 @@
 PODS:
-  - LRAtsSDK (1.4.0)
+  - GoogleAds-IMA-iOS-SDK (3.19.2)
+  - InMobiSDK (10.6.0)
+  - LRAtsSDK (2.2.1)
+  - MobileFuseSDK (1.6.4)
+  - NimbusSDK/NimbusCoreKit (2.16.0)
+  - NimbusSDK/NimbusKit (2.16.0):
+    - NimbusSDK/NimbusRenderKit
+    - NimbusSDK/NimbusRequestKit
+  - NimbusSDK/NimbusRenderKit (2.16.0):
+    - NimbusSDK/NimbusCoreKit
+  - NimbusSDK/NimbusRenderStaticKit (2.16.0):
+    - NimbusSDK/NimbusRenderKit
+  - NimbusSDK/NimbusRenderVideoKit (2.16.0):
+    - GoogleAds-IMA-iOS-SDK (>= 3.16.3)
+    - NimbusSDK/NimbusRenderKit
+  - NimbusSDK/NimbusRequestKit (2.16.0):
+    - NimbusSDK/NimbusCoreKit
+  - OpenWrapSDK (3.2.0):
+    - OpenWrapSDK/OpenWrap (= 3.2.0)
+  - OpenWrapSDK/OpenWrap (3.2.0)
+  - PrebidMobile (2.1.6):
+    - PrebidMobile/core (= 2.1.6)
+  - PrebidMobile/core (2.1.6)
 
 DEPENDENCIES:
-  - LRAtsSDK (= 1.4.0)
+  - InMobiSDK
+  - LRAtsSDK (= 2.2.1)
+  - MobileFuseSDK
+  - NimbusSDK/NimbusKit
+  - NimbusSDK/NimbusRenderStaticKit
+  - NimbusSDK/NimbusRenderVideoKit
+  - OpenWrapSDK
+  - PrebidMobile
 
 SPEC REPOS:
   trunk:
+    - GoogleAds-IMA-iOS-SDK
+    - InMobiSDK
     - LRAtsSDK
+    - MobileFuseSDK
+    - NimbusSDK
+    - OpenWrapSDK
+    - PrebidMobile
 
 SPEC CHECKSUMS:
-  LRAtsSDK: 8af10bcad10a67b150e86ffa441e4d5d89412340
+  GoogleAds-IMA-iOS-SDK: 0e817c05ab26f1b9285c80f4a75e1350a916d50b
+  InMobiSDK: 7c62b28415c663b881fa7009d04e0a5484f67902
+  LRAtsSDK: 62717445d18d2a93c5d11d8254ead12df0f2d43e
+  MobileFuseSDK: 9ac217c5c8e9e987ef4975a6a766846203cc4c01
+  NimbusSDK: 6c890ad82ba194aa8f6f3a0300ed24c75151e49b
+  OpenWrapSDK: 65e66abe3491e328c39eb16a695ae037ae47748e
+  PrebidMobile: 628c9803af299a13511d3f945a6db9b39d3c3862
 
-PODFILE CHECKSUM: 3e62298c768093f25f0ea4241598ee467bb7e531
+PODFILE CHECKSUM: 0a2616802aab8a9d72043c9e84bde4774e68664c
 
 COCOAPODS: 1.11.2

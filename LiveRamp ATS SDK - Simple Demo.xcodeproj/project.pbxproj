@@ -183,6 +183,7 @@
 				104CAA6927F7B18700787BC1 /* Frameworks */,
 				104CAA6A27F7B18700787BC1 /* Resources */,
 				F04F9FB55466275DA34B47A3 /* [CP] Embed Pods Frameworks */,
+				71E89F5489EB3B8740444EAA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,6 +222,7 @@
 				104CAA8927F7B18900787BC1 /* Frameworks */,
 				104CAA8A27F7B18900787BC1 /* Resources */,
 				EB75B78F46F327F5A161FC2D /* [CP] Embed Pods Frameworks */,
+				B32702BAC026BEC341D548AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -323,6 +325,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71E89F5489EB3B8740444EAA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B32702BAC026BEC341D548AE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BD0AC65F31D2CFBD26DB965B /* [CP] Check Pods Manifest.lock */ = {
@@ -592,7 +628,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3LN8244SS8;
+				DEVELOPMENT_TEAM = 74R7MMTVVB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LiveRamp ATS SDK - Simple Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -621,7 +657,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3LN8244SS8;
+				DEVELOPMENT_TEAM = 74R7MMTVVB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LiveRamp ATS SDK - Simple Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
