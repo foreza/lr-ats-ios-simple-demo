@@ -122,27 +122,47 @@ class ViewController: UIViewController {
     
     }
     
+        
     
     func fetchEnvelopeForEmail(email: String) {
         
         let lrEmailIdentifier = LREmailIdentifier(email)
+                
         LRAts.shared.getEnvelope(lrEmailIdentifier) { result, error in
             
             if (error != nil) {
                 let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
                 self.updateErrMessage(errMsg: errString)
             }
-            guard let envelope = result?.envelope else {
-                let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
-                self.updateErrMessage(errMsg: errString)
-                print(errString)
-                return
-            }
-            self.updateEnvelopeString(envelopeString: "\(envelope)")
-            self.updateErrMessage(errMsg: "");
-            print("Received envelope: \(envelope)")
-            self.setLREnvelopeForPartnerSDKs(envelope: envelope)
             
+            // Fetch RampID Envelope - this is used in most downstream bids, and segmentation usecases
+//            guard let lr_envelope = result?.envelope else {
+//                let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
+//                self.updateErrMessage(errMsg: errString)
+//                print(errString)
+//            }
+            
+            var displayString = ""
+        
+            if let lr_envelope: String = result?.envelope {
+                print("RampID Envelope: \(lr_envelope)")
+                displayString += "lr_envelope: \(self.formatStringForDisplay(originalString: lr_envelope))"
+                self.setLREnvelopeForPartnerSDKs(envelope: lr_envelope)
+            }
+            
+            
+            if let pair_envelope: String = result?.envelope25 {
+                print("Encoded PairIDs: \(pair_envelope)")
+                displayString += "pair_envelope: \(self.formatStringForDisplay(originalString: pair_envelope))"
+                // self.setPairIDsForPartnerSDKs(envelope: pair_envelope)
+            } else {
+                print("No PairIDs returned")
+            }
+            
+            self.updateDisplayString(envelopeString: displayString)
+
+
+//            self.updateErrMessage(errMsg: "");
         }
         
     }
@@ -281,9 +301,18 @@ class ViewController: UIViewController {
     }
     
     
-    func updateEnvelopeString(envelopeString: String) {
+    func updateDisplayString(envelopeString: String) {
         DispatchQueue.main.async {
             self.label_envelopeValue.self.text = envelopeString;
+        }
+    }
+    
+    
+    func formatStringForDisplay(originalString: String) -> String{
+        if (originalString.count > 100) {
+            return originalString.prefix(100) + "... +" + String(originalString.count-100) + "\n"
+        } else {
+            return originalString
         }
     }
     
