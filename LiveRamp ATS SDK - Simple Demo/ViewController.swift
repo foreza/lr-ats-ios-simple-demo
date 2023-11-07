@@ -9,13 +9,6 @@ import UIKit
 import AppTrackingTransparency
 import LRAtsSDK
 
-import PrebidMobile
-import InMobiSDK
-import OpenWrapSDK
-import MobileFuseSDK
-import NimbusKit
-
-
 
 class ViewController: UIViewController {
 
@@ -28,7 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_envelopeValue: UILabel!
     @IBOutlet weak var label_emailValue: UITextField!
     
-    // TODO: Replace the init appID with your own app ID before you go into production
+    // TODO: Replace the init appID with your own app ID
+    // DO NOT use this in production - it will cause you monetization issues.
      let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
     
     override func viewDidLoad() {
@@ -51,20 +45,15 @@ class ViewController: UIViewController {
             ATTrackingManager.requestTrackingAuthorization { status in
                    switch status {
                    case .authorized:
-                       // ATS can function!
-                       print("Authorized")
+                       print("Authorized")      // Yes - ATS can fetch RampID envelopes!!
                    case .denied:
-                       // NO ATS calls can be made!
-                       print("Denied")
+                       print("Denied")          // NO ATS calls can be made!
                    case .notDetermined:
-                       // NO ATS calls can be made!
-                       print("Not Determined")
+                       print("Not Determined")  // NO ATS calls can be made!
                    case .restricted:
-                       // NO ATS calls can be made!
-                       print("Restricted")
+                       print("Restricted")      // NO ATS calls can be made!
                    @unknown default:
-                       // NO ATS calls can be made!
-                       print("Unknown")
+                       print("Unknown")         // NO ATS calls can be made!
                    }
                }
 
@@ -73,19 +62,20 @@ class ViewController: UIViewController {
  
     
     
-    // Strictly TEST consent values - to be only used for testing!
+    // Strictly TEST consent values - to be only used for testing.
+    // Your CMP should be doing this for you.
     func setTestConsent() {
         
         // Your CMP SDK should be responsible for setting these values.
         let tcfString = "CPKZ42oPKZ5YtADABCENBlCgAP_AAAAAAAAAAwwAQAwgDDABADCAAA.YAAAAAAAA4AA"
         let expectedPurposesConsent = "1111111111"
         let expectedVendorsConsent = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
-        let ccpaString = "1YNN"
+        let ccpaString = "1YNY"
         
         // Required for GDPR if EU
-        // UserDefaults.standard.set(tcfString, forKey: "IABTCF_TCString")
-        // UserDefaults.standard.set(expectedPurposesConsent, forKey: "IABTCF_PurposeConsents")
-        // UserDefaults.standard.set(expectedVendorsConsent, forKey: "IABTCF_VendorConsents")
+         UserDefaults.standard.set(tcfString, forKey: "IABTCF_TCString")
+         UserDefaults.standard.set(expectedPurposesConsent, forKey: "IABTCF_PurposeConsents")
+         UserDefaults.standard.set(expectedVendorsConsent, forKey: "IABTCF_VendorConsents")
         
         // Required for CCPA if US
         UserDefaults.standard.set(ccpaString, forKey:"IABUSPrivacy_String");
@@ -102,7 +92,6 @@ class ViewController: UIViewController {
         
         if (doNotRequireCCPACheckInUS || supportOtherGeos) {
             LRAts.shared.hasConsentForNoLegislation = true
-            // LRAts.shared.hasConsentForNoLegislation = true;
         }
      
         // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
@@ -135,22 +124,26 @@ class ViewController: UIViewController {
                 self.updateErrMessage(errMsg: errString)
             }
             
-            // Fetch RampID Envelope - this is used in most downstream bids, and segmentation usecases
-//            guard let lr_envelope = result?.envelope else {
-//                let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
-//                self.updateErrMessage(errMsg: errString)
-//                print(errString)
-//            }
-            
             var displayString = ""
         
+            
+            // Example of how to use envelopes for advertising use cases:
             if let lr_envelope: String = result?.envelope {
                 print("RampID Envelope: \(lr_envelope)")
+                
+                // TODO: Now, provide the lr_envelope value to your partner(s).
+                // This value expires - by calling `getEnvelope`, you will ensure this value remains relevant.
+                // Do NOT cache this value. It will not be valuable or useful!
+                // You should always be using the most up to date envelope with downstream partners.
+                // More documentation here: https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution
+                
+                // self.setLREnvelopeForPartnerSDKs(envelope: lr_envelope)
+                
                 displayString += "lr_envelope: \(self.formatStringForDisplay(originalString: lr_envelope))"
-                self.setLREnvelopeForPartnerSDKs(envelope: lr_envelope)
             }
             
             
+            // If you are enabled for PairIDs:
             if let pair_envelope: String = result?.envelope25 {
                 print("Encoded PairIDs: \(pair_envelope)")
                 displayString += "pair_envelope: \(self.formatStringForDisplay(originalString: pair_envelope))"
@@ -160,99 +153,13 @@ class ViewController: UIViewController {
             }
             
             self.updateDisplayString(envelopeString: displayString)
-
-
-//            self.updateErrMessage(errMsg: "");
         }
         
     }
-    
-    // Always make sure your RampID envelope is up to date!
-    // Always fetch RampID envelope using getEnvelope to ensure the value is not stale
-    // Then, set that value for downstream partners.
-    func setLREnvelopeForPartnerSDKs(envelope: String) {
-        
-        setLREnvelopeForPrebid(envelope: envelope)
-        setLREnvelopeForInMobi(envelope: envelope)
-        setLREnvelopeForPubmaticOW(envelope: envelope)
-        setLREnvelopeForNimbus(envelope: envelope)
-        setLREnvelopeForPubmaticOW(envelope: envelope)
-        // More partners coming soon!
-        // Note: Google Ad Manager is a separate workflow.
-        
-        
-    }
-    
-    
-    // [PREBID] Set the updated RampID envelope in Prebid SDK (or managed Prebid Partner)
-    // https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution#prebid-sdk
-    // https://docs.prebid.org/prebid-mobile/pbm-api/ios/pbm-targeting-ios.html#user-identity-api
-    // This ensures all subsequent ad requests to Prebid Server contain the RampID envelope.
-    func setLREnvelopeForPrebid(envelope: String) {
-        
-        var externalUserIdArray = [ExternalUserId]()
-        externalUserIdArray.append(
-            ExternalUserId(source: "liveramp.com", identifier: envelope))
-        
-        Prebid.shared.externalUserIdArray = externalUserIdArray
-        
-        // TODO: Do a sample Prebid ad request to validate
-    }
-    
-    
-    // [InMobi UnifId] Set the updated RampID envelope in InMobi's UnifID service
-    // https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution#inmobi
-    // https://support.inmobi.com/monetize/data-identity/unifid/unifid-sdk-contract-specifications#unifid-api-specification
-    // This ensures all subsequent ad requests to InMobi's exchange contain the RampID envelope.
-    func setLREnvelopeForInMobi(envelope: String) {
-        
-        var idDictionary = ["liveramp.com": envelope]
-        IMSdk.self.setPublisherProvidedUnifiedId(idDictionary)
-        
-        // TODO: Do a sample InMobi ad request to validate
-    }
-    
-    
-    // [Pubmatic OW] Set the updated RampID envelope in Pubmatic's OW server
-    // https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution#pubmatic
-    // https://community.pubmatic.com/display/IOPO/Advanced+topics#Advancedtopics-UserIdentity(DataPartnerIDs)
-    // This ensures all subsequent ad requests to Pubmatic OpenWrap contain the RampID envelope.
-    func setLREnvelopeForPubmaticOW(envelope: String){
-        
-        var userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
-        OpenWrapSDK.addExternalUserId(userId)
-        
-        // TODO: Do a sample OpenWrap ad request to validate
-    }
-    
-    
-    // [Nimbus] Set the updated RampID envelope in Nimbus's SDK
-    // https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution#nimbus
-    // https://docs.adsbynimbus.com/docs/sdk/ios/extensions/liveramp#setup
-    func setLREnvelopeForNimbus(envelope: String){
-        
-        var extendedId = NimbusExtendedId(source: "liveramp.com", id: envelope)
-        extendedId.extensions = ["rtiPartner": NimbusCodable("idl")]
-        NimbusAdManager.extendedIds = [extendedId]
-        
-        // TODO: Do a sample Nimbus ad request to validate
-    }
-    
-    
-    // [MobileFuse] Set the updated RampID envelope in MobileFuse's SDK
-    // https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution#mobilefuse
-    // https://docs.mobilefuse.com/docs/leveraging-rampid-and-uid2#passing-in-a-liveramp-envelope-directly
-    func setLREnvelopeForMobileFuse(envelope: String){
-        
-        MobileFuseTargetingData.setLiveRampEnvelope(envelope)
-        
-        // TODO: Do a sample MF ad request to validate
-    
-    }
 
     
-    
     // Other misc code to make this application run
+    
     @IBAction func touchInitSDK(_ sender: Any) {
         self.initializeATSSDK();
     }
@@ -269,7 +176,6 @@ class ViewController: UIViewController {
         updateSDKInitStatus(isInitialized: false)
         print("SDK Reset")
     }
-    
     
     
     @IBAction func touchClearAll(_ sender: Any) {
