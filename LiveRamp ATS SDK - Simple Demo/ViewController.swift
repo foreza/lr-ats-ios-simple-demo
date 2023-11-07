@@ -9,15 +9,18 @@ import UIKit
 import AppTrackingTransparency
 import LRAtsSDK
 
-import PrebidMobile
-import InMobiSDK
-import OpenWrapSDK
-import MobileFuseSDK
-import NimbusKit
+
+
+//import PrebidMobile
+//import InMobiSDK
+//import OpenWrapSDK
+//import MobileFuseSDK
+//import NimbusKit
 
 
 
 class ViewController: UIViewController {
+
 
     
     // View references
@@ -29,7 +32,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_emailValue: UITextField!
     
     // TODO: Replace the init appID with your own app ID before you go into production
-     let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
+     let appId = "6aebc913-81ed-43cf-98f1-ddab49423f3d"
+     let apiKey = "00eF0a31e8Af8acE5fe9247e9B0C7d9E" // for BF?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,14 @@ class ViewController: UIViewController {
         setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
     }
     
+    
+    //
+    func getDealIDFromBloomFilterForEmail(email: String) async -> String {
+                
+        let dealID = await doBloomFilterFlow(rawEmail: email)
+        print("LiveRamp ATS SDK found dealID: ", dealID)
+        return dealID
+    }
     
     
     // We require ATT in order to operate!
@@ -80,7 +92,7 @@ class ViewController: UIViewController {
         let tcfString = "CPKZ42oPKZ5YtADABCENBlCgAP_AAAAAAAAAAwwAQAwgDDABADCAAA.YAAAAAAAA4AA"
         let expectedPurposesConsent = "1111111111"
         let expectedVendorsConsent = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
-        let ccpaString = "1YNN"
+        let ccpaString = "1YNY"
         
         // Required for GDPR if EU
         // UserDefaults.standard.set(tcfString, forKey: "IABTCF_TCString")
@@ -102,11 +114,9 @@ class ViewController: UIViewController {
         
         if (doNotRequireCCPACheckInUS || supportOtherGeos) {
             LRAts.shared.hasConsentForNoLegislation = true
-            // LRAts.shared.hasConsentForNoLegislation = true;
         }
-     
-        // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
-        let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false);
+        
+        let lrAtsConfiguration = LRAtsConfiguration(appId: appId, apiKey: "blah", isTestMode: false, logToFileEnabled: false)
 
             LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
             if success {
@@ -124,10 +134,16 @@ class ViewController: UIViewController {
     
         
     
-    func fetchEnvelopeForEmail(email: String) {
+    func fetchEnvelopeForEmail(email: String) async {
+        
+        
+        await self.getDealIDFromBloomFilterForEmail(email: email)
         
         let lrEmailIdentifier = LREmailIdentifier(email)
-                
+
+        let lrEmailId2 = LREmailIdentifier(sha256: "1be6aaf29df9c06c7758bdee0d511c01faab94b4a022577201742dab743b7ec5")
+        
+        
         LRAts.shared.getEnvelope(lrEmailIdentifier) { result, error in
             
             if (error != nil) {
@@ -173,10 +189,11 @@ class ViewController: UIViewController {
     func setLREnvelopeForPartnerSDKs(envelope: String) {
         
         setLREnvelopeForPrebid(envelope: envelope)
+        
         setLREnvelopeForInMobi(envelope: envelope)
         setLREnvelopeForPubmaticOW(envelope: envelope)
         setLREnvelopeForNimbus(envelope: envelope)
-        setLREnvelopeForPubmaticOW(envelope: envelope)
+        setLREnvelopeForMobileFuse(envelope: envelope)
         // More partners coming soon!
         // Note: Google Ad Manager is a separate workflow.
         
@@ -190,11 +207,11 @@ class ViewController: UIViewController {
     // This ensures all subsequent ad requests to Prebid Server contain the RampID envelope.
     func setLREnvelopeForPrebid(envelope: String) {
         
-        var externalUserIdArray = [ExternalUserId]()
-        externalUserIdArray.append(
-            ExternalUserId(source: "liveramp.com", identifier: envelope))
-        
-        Prebid.shared.externalUserIdArray = externalUserIdArray
+//        var externalUserIdArray = [ExternalUserId]()
+//        externalUserIdArray.append(
+//            ExternalUserId(source: "liveramp.com", identifier: envelope))
+//
+//        Prebid.shared.externalUserIdArray = externalUserIdArray
         
         // TODO: Do a sample Prebid ad request to validate
     }
@@ -206,8 +223,8 @@ class ViewController: UIViewController {
     // This ensures all subsequent ad requests to InMobi's exchange contain the RampID envelope.
     func setLREnvelopeForInMobi(envelope: String) {
         
-        var idDictionary = ["liveramp.com": envelope]
-        IMSdk.self.setPublisherProvidedUnifiedId(idDictionary)
+//        var idDictionary = ["liveramp.com": envelope]
+//        IMSdk.self.setPublisherProvidedUnifiedId(idDictionary)
         
         // TODO: Do a sample InMobi ad request to validate
     }
@@ -219,9 +236,9 @@ class ViewController: UIViewController {
     // This ensures all subsequent ad requests to Pubmatic OpenWrap contain the RampID envelope.
     func setLREnvelopeForPubmaticOW(envelope: String){
         
-        var userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
-        OpenWrapSDK.addExternalUserId(userId)
-        
+//        var userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
+//        OpenWrapSDK.addExternalUserId(userId)
+//
         // TODO: Do a sample OpenWrap ad request to validate
     }
     
@@ -231,9 +248,9 @@ class ViewController: UIViewController {
     // https://docs.adsbynimbus.com/docs/sdk/ios/extensions/liveramp#setup
     func setLREnvelopeForNimbus(envelope: String){
         
-        var extendedId = NimbusExtendedId(source: "liveramp.com", id: envelope)
-        extendedId.extensions = ["rtiPartner": NimbusCodable("idl")]
-        NimbusAdManager.extendedIds = [extendedId]
+//        var extendedId = NimbusExtendedId(source: "liveramp.com", id: envelope)
+//        extendedId.extensions = ["rtiPartner": NimbusCodable("idl")]
+//        NimbusAdManager.extendedIds = [extendedId]
         
         // TODO: Do a sample Nimbus ad request to validate
     }
@@ -244,7 +261,7 @@ class ViewController: UIViewController {
     // https://docs.mobilefuse.com/docs/leveraging-rampid-and-uid2#passing-in-a-liveramp-envelope-directly
     func setLREnvelopeForMobileFuse(envelope: String){
         
-        MobileFuseTargetingData.setLiveRampEnvelope(envelope)
+//        MobileFuseTargetingData.setLiveRampEnvelope(envelope)
         
         // TODO: Do a sample MF ad request to validate
     
@@ -259,8 +276,10 @@ class ViewController: UIViewController {
     
     
     @IBAction func touchFetchEnvelope(_ sender: Any) {
-        let emailValue = label_emailValue.text;
-        fetchEnvelopeForEmail(email: emailValue ?? "test@liveramp.com");
+        Task { @MainActor in
+            let emailValue = label_emailValue.text;
+            await fetchEnvelopeForEmail(email: emailValue ?? "jason.chiu@liveramp.com");
+        }
     }
     
     

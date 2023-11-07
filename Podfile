@@ -6,11 +6,11 @@ target 'LiveRamp ATS SDK - Simple Demo' do
   # use_frameworks!
   pod 'LRAtsSDK', '2.2.1'
   
-  pod 'PrebidMobile'
-  pod 'InMobiSDK'
-  pod 'OpenWrapSDK'
-  pod 'NimbusSDK', subspecs: ['NimbusKit', 'NimbusRenderStaticKit', 'NimbusRenderVideoKit']
-  pod 'MobileFuseSDK'
+#  pod 'PrebidMobile'
+#  pod 'InMobiSDK'
+#  pod 'OpenWrapSDK'
+#  pod 'NimbusSDK', subspecs: ['NimbusKit', 'NimbusRenderStaticKit', 'NimbusRenderVideoKit']
+#  pod 'MobileFuseSDK'
 
 
   # Pods for LiveRamp ATS SDK - Simple Demo
