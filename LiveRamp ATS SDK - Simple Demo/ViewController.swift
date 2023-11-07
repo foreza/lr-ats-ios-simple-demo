@@ -9,6 +9,7 @@ import UIKit
 import AppTrackingTransparency
 import LRAtsSDK
 
+
 class ViewController: UIViewController {
 
     
@@ -20,7 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_envelopeValue: UILabel!
     @IBOutlet weak var label_emailValue: UITextField!
     
-    // TODO: Replace the init appID with your own app ID before you go into production
+    // TODO: Replace the init appID with your own app ID
+    // DO NOT use this in production - it will cause you monetization issues.
      let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
     
     override func viewDidLoad() {
@@ -35,49 +37,47 @@ class ViewController: UIViewController {
     }
     
     
-    
+
     // We require ATT in order to operate!
     // No ATT = No RampID envelopes!
     func checkATTF(){
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { status in
+        
+        
+            if #available(iOS 14, *), ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
+                ATTrackingManager.requestTrackingAuthorization { status in
                    switch status {
                    case .authorized:
-                       // ATS can function!
-                       print("Authorized")
+                       print("Authorized")      // Yes - ATS can fetch RampID envelopes!!
                    case .denied:
-                       // NO ATS calls can be made!
-                       print("Denied")
+                       print("Denied")          // NO ATS calls can be made!
                    case .notDetermined:
-                       // NO ATS calls can be made!
-                       print("Not Determined")
+                       print("Not Determined")  // NO ATS calls can be made!
                    case .restricted:
-                       // NO ATS calls can be made!
-                       print("Restricted")
+                       print("Restricted")      // NO ATS calls can be made!
                    @unknown default:
-                       // NO ATS calls can be made!
-                       print("Unknown")
+                       print("Unknown")         // NO ATS calls can be made!
                    }
-               }
-
-        }
+                }
+                
+            }
     }
  
     
     
-    // Strictly TEST consent values - to be only used for testing!
+    // Strictly TEST consent values - to be only used for testing.
+    // Your CMP should be doing this for you.
     func setTestConsent() {
         
         // Your CMP SDK should be responsible for setting these values.
         let tcfString = "CPKZ42oPKZ5YtADABCENBlCgAP_AAAAAAAAAAwwAQAwgDDABADCAAA.YAAAAAAAA4AA"
         let expectedPurposesConsent = "1111111111"
         let expectedVendorsConsent = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
-        let ccpaString = "1YNN"
+        let ccpaString = "1YNY"
         
         // Required for GDPR if EU
-        // UserDefaults.standard.set(tcfString, forKey: "IABTCF_TCString")
-        // UserDefaults.standard.set(expectedPurposesConsent, forKey: "IABTCF_PurposeConsents")
-        // UserDefaults.standard.set(expectedVendorsConsent, forKey: "IABTCF_VendorConsents")
+         UserDefaults.standard.set(tcfString, forKey: "IABTCF_TCString")
+         UserDefaults.standard.set(expectedPurposesConsent, forKey: "IABTCF_PurposeConsents")
+         UserDefaults.standard.set(expectedVendorsConsent, forKey: "IABTCF_VendorConsents")
         
         // Required for CCPA if US
         UserDefaults.standard.set(ccpaString, forKey:"IABUSPrivacy_String");
@@ -94,7 +94,6 @@ class ViewController: UIViewController {
         
         if (doNotRequireCCPACheckInUS || supportOtherGeos) {
             LRAts.shared.hasConsentForNoLegislation = true
-            // LRAts.shared.hasConsentForNoLegislation = true;
         }
      
         // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
@@ -114,33 +113,56 @@ class ViewController: UIViewController {
     
     }
     
+        
     
     func fetchEnvelopeForEmail(email: String) {
         
         let lrEmailIdentifier = LREmailIdentifier(email)
+                
         LRAts.shared.getEnvelope(lrEmailIdentifier) { result, error in
             
             if (error != nil) {
                 let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
                 self.updateErrMessage(errMsg: errString)
             }
-            guard let envelope = result?.envelope else {
-                let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
-                self.updateErrMessage(errMsg: errString)
-                print(errString)
-                return
-            }
-            self.updateEnvelopeString(envelopeString: "\(envelope)")
-            self.updateErrMessage(errMsg: "");
-            print("Received envelope: \(envelope)")
             
+            var displayString = ""
+        
+            
+            // Example of how to use envelopes for advertising use cases:
+            if let lr_envelope: String = result?.envelope {
+                print("RampID Envelope: \(lr_envelope)")
+                
+                // TODO: Now, provide the lr_envelope value to your partner(s).
+                // This value expires - by calling `getEnvelope`, you will ensure this value remains relevant.
+                // Do NOT cache this value. It will not be valuable or useful!
+                // You should always be using the most up to date envelope with downstream partners.
+                // More documentation here: https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution
+                
+                // self.setLREnvelopeForPartnerSDKs(envelope: lr_envelope)
+                
+                displayString += "lr_envelope: \(self.formatStringForDisplay(originalString: lr_envelope))"
+                self.updateErrMessage(errMsg: "")
+            }
+            
+            
+            // If you are enabled for PairIDs:
+            if let pair_envelope: String = result?.envelope25 {
+                print("Encoded PairIDs: \(pair_envelope)")
+                displayString += "pair_envelope: \(self.formatStringForDisplay(originalString: pair_envelope))"
+                // self.setPairIDsForPartnerSDKs(envelope: pair_envelope)
+            } else {
+                print("No PairIDs returned")
+            }
+            
+            self.updateDisplayString(envelopeString: displayString)
         }
         
     }
-    
-    
+
     
     // Other misc code to make this application run
+    
     @IBAction func touchInitSDK(_ sender: Any) {
         self.initializeATSSDK();
     }
@@ -157,7 +179,6 @@ class ViewController: UIViewController {
         updateSDKInitStatus(isInitialized: false)
         print("SDK Reset")
     }
-    
     
     
     @IBAction func touchClearAll(_ sender: Any) {
@@ -189,9 +210,18 @@ class ViewController: UIViewController {
     }
     
     
-    func updateEnvelopeString(envelopeString: String) {
+    func updateDisplayString(envelopeString: String) {
         DispatchQueue.main.async {
             self.label_envelopeValue.self.text = envelopeString;
+        }
+    }
+    
+    
+    func formatStringForDisplay(originalString: String) -> String{
+        if (originalString.count > 100) {
+            return originalString.prefix(100) + "... +" + String(originalString.count-100) + "\n"
+        } else {
+            return originalString
         }
     }
     

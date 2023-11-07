@@ -4,10 +4,15 @@
 target 'LiveRamp ATS SDK - Simple Demo' do
   # Comment the next line if you don't want to use dynamic frameworks
   # use_frameworks!
-  pod 'LRAtsSDK', '1.3.1'
+  pod 'LRAtsSDK'
   
-  # Pods for LiveRamp ATS SDK - Simple Demo
+#  pod 'PrebidMobile'
+#  pod 'InMobiSDK'
+#  pod 'OpenWrapSDK'
+#  pod 'NimbusSDK', subspecs: ['NimbusKit', 'NimbusRenderStaticKit', 'NimbusRenderVideoKit']
+#  pod 'MobileFuseSDK'
 
+  # Pods for LiveRamp ATS SDK - Simple Demo
   target 'LiveRamp ATS SDK - Simple DemoTests' do
     inherit! :search_paths
     # Pods for testing

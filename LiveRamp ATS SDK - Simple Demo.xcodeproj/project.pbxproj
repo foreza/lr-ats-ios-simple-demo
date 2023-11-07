@@ -17,6 +17,7 @@
 		104CAA8727F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA8627F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift */; };
 		104CAA9127F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA9027F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift */; };
 		104CAA9327F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA9227F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift */; };
+		108A6ABB2AF9B826009122DE /* PartnerIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108A6ABA2AF9B826009122DE /* PartnerIdentity.swift */; };
 		51B949D8C8A18A8A32F8090E /* libPods-LiveRamp ATS SDK - Simple DemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC73901678E28CEB4EAB5AD /* libPods-LiveRamp ATS SDK - Simple DemoTests.a */; };
 		A4B7C86F4496EB3C8B981C14 /* libPods-LiveRamp ATS SDK - Simple Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3D2C3C9DC347C60CD66269 /* libPods-LiveRamp ATS SDK - Simple Demo.a */; };
 		F06624B02163D2094C322C51 /* libPods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D62E3D063A3E4C5F20D5F8 /* libPods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests.a */; };
@@ -51,10 +52,11 @@
 		104CAA7B27F7B18900787BC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		104CAA7D27F7B18900787BC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		104CAA8227F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		104CAA8627F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRamp_ATS_SDK___Simple_DemoTests.swift"; sourceTree = "<group>"; };
+		104CAA8627F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRamp_ATS_SDK___Simple_DemoTests.swift; sourceTree = "<group>"; };
 		104CAA8C27F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		104CAA9027F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRamp_ATS_SDK___Simple_DemoUITests.swift"; sourceTree = "<group>"; };
-		104CAA9227F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift"; sourceTree = "<group>"; };
+		104CAA9027F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRamp_ATS_SDK___Simple_DemoUITests.swift; sourceTree = "<group>"; };
+		104CAA9227F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		108A6ABA2AF9B826009122DE /* PartnerIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerIdentity.swift; sourceTree = "<group>"; };
 		1D3D2C3C9DC347C60CD66269 /* libPods-LiveRamp ATS SDK - Simple Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiveRamp ATS SDK - Simple Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CC73901678E28CEB4EAB5AD /* libPods-LiveRamp ATS SDK - Simple DemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiveRamp ATS SDK - Simple DemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		799405DCD311FA5F9E19F390 /* Pods-LiveRamp ATS SDK - Simple Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple Demo.debug.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				104CAA7827F7B18900787BC1 /* Assets.xcassets */,
 				104CAA7A27F7B18900787BC1 /* LaunchScreen.storyboard */,
 				104CAA7D27F7B18900787BC1 /* Info.plist */,
+				108A6ABA2AF9B826009122DE /* PartnerIdentity.swift */,
 			);
 			path = "LiveRamp ATS SDK - Simple Demo";
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			files = (
 				104CAA7427F7B18700787BC1 /* ViewController.swift in Sources */,
 				104CAA7027F7B18700787BC1 /* AppDelegate.swift in Sources */,
+				108A6ABB2AF9B826009122DE /* PartnerIdentity.swift in Sources */,
 				104CAA7227F7B18700787BC1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,7 +596,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3LN8244SS8;
+				DEVELOPMENT_TEAM = 74R7MMTVVB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LiveRamp ATS SDK - Simple Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -621,7 +625,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3LN8244SS8;
+				DEVELOPMENT_TEAM = 74R7MMTVVB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LiveRamp ATS SDK - Simple Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
