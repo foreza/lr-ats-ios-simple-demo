@@ -37,12 +37,14 @@ class ViewController: UIViewController {
     }
     
     
-    
+
     // We require ATT in order to operate!
     // No ATT = No RampID envelopes!
     func checkATTF(){
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { status in
+        
+        
+            if #available(iOS 14, *), ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
+                ATTrackingManager.requestTrackingAuthorization { status in
                    switch status {
                    case .authorized:
                        print("Authorized")      // Yes - ATS can fetch RampID envelopes!!
@@ -55,9 +57,9 @@ class ViewController: UIViewController {
                    @unknown default:
                        print("Unknown")         // NO ATS calls can be made!
                    }
-               }
-
-        }
+                }
+                
+            }
     }
  
     
@@ -140,6 +142,7 @@ class ViewController: UIViewController {
                 // self.setLREnvelopeForPartnerSDKs(envelope: lr_envelope)
                 
                 displayString += "lr_envelope: \(self.formatStringForDisplay(originalString: lr_envelope))"
+                self.updateErrMessage(errMsg: "")
             }
             
             
