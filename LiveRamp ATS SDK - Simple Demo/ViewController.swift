@@ -37,15 +37,17 @@ class ViewController: UIViewController {
     }
     
     
-
-    // We require ATT in order to operate!
+    // We require ATT in order to use ATS. (Without ATT)
     // No ATT = No RampID envelopes!
     func checkATTF(){
         
+        print("Checking for ATT.")
         
-            if #available(iOS 14, *), ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
-                ATTrackingManager.requestTrackingAuthorization { status in
-                   switch status {
+        if #available(iOS 15, *), ATTrackingManager.trackingAuthorizationStatus != .authorized {
+            print("[Warning] ATT was not authorized - authorize it to use ATS for envelopes!")
+            
+            ATTrackingManager.requestTrackingAuthorization { status in
+               switch status {
                    case .authorized:
                        print("Authorized")      // Yes - ATS can fetch RampID envelopes!!
                    case .denied:
@@ -56,10 +58,11 @@ class ViewController: UIViewController {
                        print("Restricted")      // NO ATS calls can be made!
                    @unknown default:
                        print("Unknown")         // NO ATS calls can be made!
-                   }
-                }
-                
+               }
             }
+        } else {
+            print("ATT authorized - envelope fetch enabled!")
+        }
     }
  
     
