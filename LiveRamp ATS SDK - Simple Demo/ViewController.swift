@@ -23,7 +23,10 @@ class ViewController: UIViewController {
     
     // TODO: Replace the init appID with your own app ID
     // DO NOT use this in production - it will cause you monetization issues.
-     let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
+//     let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
+    
+    let atsd_test_appID = "6aebc913-81ed-43cf-98f1-ddab49423f3d"; // Test ATS Direct
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +103,11 @@ class ViewController: UIViewController {
         }
      
         // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
-        let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false);
+        // Note: This constructor will be deprecated - swap appID - configID!
+        // let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false);
+        
+//        let lrAtsConfiguration = LRAtsConfiguration(configID: atsd_test_appID)
+        let lrAtsConfiguration = LRAtsConfiguration(appId: atsd_test_appID)
 
             LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
             if success {
@@ -149,14 +156,43 @@ class ViewController: UIViewController {
             }
             
             
+//            if let segments = result.pairSegments {
+//                print(segments)  // Output: ["Segment1", "Segment2"]
+//            } else {
+//                print("No segments available")
+//            }
+            
             // If you are enabled for PairIDs:
             if let pair_envelope: String = result?.envelope25 {
                 print("Encoded PairIDs: \(pair_envelope)")
-                displayString += "pair_envelope: \(self.formatStringForDisplay(originalString: pair_envelope))"
+                
+                // Assumption: we can always use result?.pairSegments? if result?.envelope25 exists?
+                // The pairID is the first element in the list, always
+                let pairID = result?.pairSegments?.first
+                
+                displayString += "pair_envelope: \(self.formatStringForDisplay(originalString: pairID ?? "" ))"
                 // self.setPairIDsForPartnerSDKs(envelope: pair_envelope)
             } else {
                 print("No PairIDs returned")
             }
+            
+            
+            // If you are enabled for ATS Direct:
+            if let atsdEncodedKeyValues: String = result?.envelope26 {
+                print("Encoded ATSD Keys: \(atsdEncodedKeyValues)")
+                
+                // Assumption: we can always use result?...? if result?... exists?
+                let atsdDecodedKeyValues = result?.atsDirectSegments
+                let atsdDisplayString = atsdDecodedKeyValues?.joined(separator: ",")
+                
+                setAtsdTargetingValues(values: atsdDecodedKeyValues ?? [String]())
+                
+                displayString += "atsd_keys: \(self.formatStringForDisplay(originalString: atsdDisplayString ?? "" ))"
+                // self.setPairIDsForPartnerSDKs(envelope: pair_envelope)
+            } else {
+                print("No PairIDs returned")
+            }
+            
             
             self.updateDisplayString(envelopeString: displayString)
         }
@@ -173,7 +209,7 @@ class ViewController: UIViewController {
     
     @IBAction func touchFetchEnvelope(_ sender: Any) {
         let emailValue = label_emailValue.text;
-        fetchEnvelopeForEmail(email: emailValue ?? "test@liveramp.com");
+        fetchEnvelopeForEmail(email: emailValue ?? "atstest@liveramp.com");
     }
     
     

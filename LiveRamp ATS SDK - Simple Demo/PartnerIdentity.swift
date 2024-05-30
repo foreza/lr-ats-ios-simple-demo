@@ -13,6 +13,10 @@ import Foundation
 //import MobileFuseSDK
 //import NimbusKit
 
+
+var atsdTargetingValues = [String]() // store ATSD here
+
+
 func setLREnvelopeForPartnerSDKs(envelope: String) {
     
     //    setLREnvelopeForPrebid(envelope: envelope)
@@ -90,5 +94,22 @@ func setLREnvelopeForMobileFuse(envelope: String){
     
     // TODO: Do a sample MF ad request to validate
 
+}
+
+
+// [ATSD] Get the key value pair and persist it here for use in Google's SDK
+func setAtsdTargetingValues(values: [String]){
+    
+    if (values.isEmpty) {
+        atsdTargetingValues = [String]()
+    }
+    
+    let atsdTargetingValues = values
+}
+
+func getATSDirectKeyValues() -> [String]{
+    //        AdManagerAdRequest newRequest = new AdManagerAdRequest.Builder()
+    //                .addCustomTargeting(atsdTargetingKey, atsdTargetingValues);
+    return atsdTargetingValues
 }
 
