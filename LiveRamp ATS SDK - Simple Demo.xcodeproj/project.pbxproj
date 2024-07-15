@@ -186,6 +186,7 @@
 				104CAA6927F7B18700787BC1 /* Frameworks */,
 				104CAA6A27F7B18700787BC1 /* Resources */,
 				F04F9FB55466275DA34B47A3 /* [CP] Embed Pods Frameworks */,
+				39C0EF758FFCEF2510D56856 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,6 +225,7 @@
 				104CAA8927F7B18900787BC1 /* Frameworks */,
 				104CAA8A27F7B18900787BC1 /* Resources */,
 				EB75B78F46F327F5A161FC2D /* [CP] Embed Pods Frameworks */,
+				17F3C0BF7681D47E750C0DFE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -306,6 +308,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		17F3C0BF7681D47E750C0DFE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39C0EF758FFCEF2510D56856 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6B2534FCE458FC3F4FAA3B10 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

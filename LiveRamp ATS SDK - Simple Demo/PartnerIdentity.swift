@@ -15,6 +15,7 @@ import Foundation
 
 
 var atsdTargetingValues = [String]() // store ATSD here
+let atsdTargetingKey = "atsd";
 
 
 func setLREnvelopeForPartnerSDKs(envelope: String) {
@@ -104,12 +105,10 @@ func setAtsdTargetingValues(values: [String]){
         atsdTargetingValues = [String]()
     }
     
-    let atsdTargetingValues = values
+    atsdTargetingValues = values
 }
 
 func getATSDirectKeyValues() -> [String]{
-    //        AdManagerAdRequest newRequest = new AdManagerAdRequest.Builder()
-    //                .addCustomTargeting(atsdTargetingKey, atsdTargetingValues);
     return atsdTargetingValues
 }
 

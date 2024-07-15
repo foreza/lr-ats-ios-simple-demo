@@ -8,6 +8,7 @@
 import UIKit
 import AppTrackingTransparency
 import LRAtsSDK
+import GoogleMobileAds
 
 
 class ViewController: UIViewController {
@@ -20,6 +21,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var label_envelopeValue: UILabel!
     @IBOutlet weak var label_emailValue: UITextField!
+    
+    var bannerView: GADBannerView!
+
     
     // TODO: Replace the init appID with your own app ID
     // DO NOT use this in production - it will cause you monetization issues.
@@ -37,6 +41,45 @@ class ViewController: UIViewController {
         
         // initializeATSSDK();
         setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
+        
+        
+        // Init GMA on start
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
+
+          let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+          bannerView = GADBannerView(adSize: GADAdSizeMediumRectangle)
+    }
+    
+    func requestAndShowBanner(){
+        
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+           view.addSubview(bannerView)
+           view.addConstraints(
+             [NSLayoutConstraint(item: bannerView,
+                                 attribute: .bottom,
+                                 relatedBy: .equal,
+                                 toItem: view.safeAreaLayoutGuide,
+                                 attribute: .bottom,
+                                 multiplier: 1,
+                                 constant: 0),
+              NSLayoutConstraint(item: bannerView,
+                                 attribute: .centerX,
+                                 relatedBy: .equal,
+                                 toItem: view,
+                                 attribute: .centerX,
+                                 multiplier: 1,
+                                 constant: 0)
+             ])
+          
+        bannerView.adUnitID = "/22794602900/ats-direct-v2-demo"
+        bannerView.rootViewController = self
+        
+        let request = GAMRequest()
+        request.customTargeting = [atsdTargetingKey : getATSDirectKeyValues().joined(separator: ",")];
+
+        bannerView.load(request)
     }
     
     
@@ -90,6 +133,24 @@ class ViewController: UIViewController {
     }
     
     
+    func initializeATSSDKTest1() {
+        LRAts.shared.hasConsentForNoLegislation = true
+                
+        let lrAtsConfiguration = LRAtsConfiguration(configID: atsd_test_appID)
+
+            LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
+            if success {
+                print("LiveRamp ATS SDK is again Ready!")
+                self.fetchEnvelopeForEmail(email: "jasonthechiu@gmail.com")
+            } else {
+                let errString = error?.localizedDescription
+                print("Failed to init SDK with error", errString ?? "")
+            }
+        }
+    
+    }
+        
+    
     func initializeATSSDK() {
             
         self.checkATTF()
@@ -106,8 +167,7 @@ class ViewController: UIViewController {
         // Note: This constructor will be deprecated - swap appID - configID!
         // let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false);
         
-//        let lrAtsConfiguration = LRAtsConfiguration(configID: atsd_test_appID)
-        let lrAtsConfiguration = LRAtsConfiguration(appId: atsd_test_appID)
+        let lrAtsConfiguration = LRAtsConfiguration(configID: atsd_test_appID)
 
             LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
             if success {
@@ -156,11 +216,6 @@ class ViewController: UIViewController {
             }
             
             
-//            if let segments = result.pairSegments {
-//                print(segments)  // Output: ["Segment1", "Segment2"]
-//            } else {
-//                print("No segments available")
-//            }
             
             // If you are enabled for PairIDs:
             if let pair_envelope: String = result?.envelope25 {
@@ -214,9 +269,17 @@ class ViewController: UIViewController {
     
     
     @IBAction func touchResetSDK(_ sender: Any) {
-        LRAts.shared.resetSDK()
+        LRAts.shared.resetSDK()             // Call this when the user is logged out!
+        
+        
+        initializeATSSDK()
+        initializeATSSDKTest1()
+        
         updateSDKInitStatus(isInitialized: false)
         print("SDK Reset")
+        
+        // On reset; also remember to clear targeting!
+        setAtsdTargetingValues(values: [String()])
     }
     
     
@@ -227,6 +290,11 @@ class ViewController: UIViewController {
             self.label_emailValue.text = ""
         }
     }
+    
+    @IBAction func touchRequestShowAd(_ sender: Any) {
+        self.requestAndShowBanner()
+    }
+    
     
             
     func updateErrMessage(errMsg: String) {

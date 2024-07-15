@@ -12,6 +12,8 @@ target 'LiveRamp ATS SDK - Simple Demo' do
 #  pod 'NimbusSDK', subspecs: ['NimbusKit', 'NimbusRenderStaticKit', 'NimbusRenderVideoKit']
 #  pod 'MobileFuseSDK'
 
+  pod 'Google-Mobile-Ads-SDK'
+
   # Pods for LiveRamp ATS SDK - Simple Demo
   target 'LiveRamp ATS SDK - Simple DemoTests' do
     inherit! :search_paths
