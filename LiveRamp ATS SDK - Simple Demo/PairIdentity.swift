@@ -11,16 +11,10 @@ import Foundation
 import OpenWrapSDK
 //import NimbusKit
 
-func setPairIdsForPartnerSDKs(envelope: String) {
-    
-    //    setLREnvelopeForPrebid(envelope: envelope)
-    //    setLREnvelopeForInMobi(envelope: envelope)
-    //    setLREnvelopeForPubmaticOW(envelope: envelope)
-    //    setLREnvelopeForNimbus(envelope: envelope)
-    //    setLREnvelopeForPubmaticOW(envelope: envelope)
-    // More partners coming soon!
-    // Note: Google Ad Manager is a separate workflow.
-    
+func setPairIdsForPartnerSDKs(pairIdsArr: [String]) {
+    setPairIdsForPubmaticOW(pairIds: pairIdsArr)
+    setPairIdsForPrebid(pairIds: pairIdsArr)
+    setPairIdsForNimbus(pairIds: pairIdsArr)
 }
 
 
@@ -28,7 +22,7 @@ func setPairIdsForPartnerSDKs(envelope: String) {
 // https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution#prebid-sdk
 // https://docs.prebid.org/prebid-mobile/pbm-api/ios/pbm-targeting-ios.html#user-identity-api
 // This ensures all subsequent ad requests to Prebid Server contain the RampID envelope.
-func setPairIdsForPrebid(envelope: String) {
+func setPairIdsForPrebid(pairIds: [String]) {
     
 //    var externalUserIdArray = [ExternalUserId]()
 //    externalUserIdArray.append(
@@ -45,20 +39,21 @@ func setPairIdsForPrebid(envelope: String) {
 // https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution#pubmatic
 // https://community.pubmatic.com/display/IOPO/Advanced+topics#Advancedtopics-UserIdentity(DataPartnerIDs)
 // This ensures all subsequent ad requests to Pubmatic OpenWrap contain the RampID envelope.
-func setPairIdsForPubmaticOW(envelope: String){
+func setPairIdsForPubmaticOW(pairIds: [String]){
     
-    var userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
-//    userId.atype =
-//    OpenWrapSDK.addExternalUserId(userId)
-    
-    // TODO: Do a sample OpenWrap ad request to validate
+    for pairId in pairIds {
+        var tPairId = POBExternalUserId(source: "google.com", andId: pairId)
+        tPairId.atype = 571187;
+        OpenWrapSDK.addExternalUserId(tPairId)
+    }
+
 }
 
 
 // [Nimbus] Set the updated RampID envelope in Nimbus's SDK
 // https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution#nimbus
 // https://docs.adsbynimbus.com/docs/sdk/ios/extensions/liveramp#setup
-func setPairIdsForNimbus(envelope: String){
+func setPairIdsForNimbus(pairIds: [String]){
     
 //    var extendedId = NimbusExtendedId(source: "liveramp.com", id: envelope)
 //    extendedId.extensions = ["rtiPartner": NimbusCodable("idl")]

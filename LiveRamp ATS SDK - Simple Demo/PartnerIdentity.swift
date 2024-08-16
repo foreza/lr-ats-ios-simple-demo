@@ -61,11 +61,8 @@ func setLREnvelopeForInMobi(envelope: String) {
 // https://community.pubmatic.com/display/IOPO/Advanced+topics#Advancedtopics-UserIdentity(DataPartnerIDs)
 // This ensures all subsequent ad requests to Pubmatic OpenWrap contain the RampID envelope.
 func setLREnvelopeForPubmaticOW(envelope: String){
-    
-//    var userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
-//    OpenWrapSDK.addExternalUserId(userId)
-    
-    // TODO: Do a sample OpenWrap ad request to validate
+    var userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
+    OpenWrapSDK.addExternalUserId(userId)
 }
 
 

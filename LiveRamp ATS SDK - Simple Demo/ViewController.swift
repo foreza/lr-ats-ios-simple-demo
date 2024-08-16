@@ -34,6 +34,9 @@ class ViewController: UIViewController {
         
         // initializeATSSDK();
         setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
+        
+        // Sample Setup
+        setupPubmaticOW()
     }
     
     
@@ -144,7 +147,6 @@ class ViewController: UIViewController {
                 setLREnvelopeForPartnerSDKs(envelope: lr_envelope ?? "noEnvelope")
                 
                 displayString += "lr_envelope: \(formatStringForDisplay(originalString: lr_envelope ?? "noEnvelope"))"
-                updateErrMessage(errMsg: "")
                 
                 // Handle PairIDs
                 
@@ -152,9 +154,8 @@ class ViewController: UIViewController {
                 print("PairID Segments: \(pair_envelope?.joined(separator: ",") ?? "noPairID")")
                 // Join them together as a string array for display
                 displayString += "pair_envelope: \(formatStringForDisplay(originalString: pair_envelope?.joined(separator: ",") ?? "noPairID"))"
-                
-                
-                // self.setPairIDsForPartnerSDKs(envelope: pair_envelope)
+                                
+                setPairIdsForPartnerSDKs(pairIdsArr: pair_envelope ?? [])
                 
                 
             } catch {
@@ -162,6 +163,9 @@ class ViewController: UIViewController {
                 updateErrMessage(errMsg: errString)
             }
             
+            
+            makePubmaticOWRequest()
+            updateErrMessage(errMsg: "")
             updateDisplayString(envelopeString: displayString)
             
         }

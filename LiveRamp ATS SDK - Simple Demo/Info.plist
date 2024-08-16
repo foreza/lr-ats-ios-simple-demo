@@ -3,7 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>LiveRamp's ATS SDK requires ATT consent! Work with your team to construct a compelling pre-prompt message.</string>
+	<string>LiveRamp&apos;s ATS SDK requires ATT consent! Work with your team to construct a compelling pre-prompt message.</string>
+	<key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
