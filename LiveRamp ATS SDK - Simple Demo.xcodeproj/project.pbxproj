@@ -52,10 +52,10 @@
 		104CAA7B27F7B18900787BC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		104CAA7D27F7B18900787BC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		104CAA8227F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		104CAA8627F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRamp_ATS_SDK___Simple_DemoTests.swift; sourceTree = "<group>"; };
+		104CAA8627F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRamp_ATS_SDK___Simple_DemoTests.swift"; sourceTree = "<group>"; };
 		104CAA8C27F7B18900787BC1 /* LiveRamp ATS SDK - Simple DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		104CAA9027F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRamp_ATS_SDK___Simple_DemoUITests.swift; sourceTree = "<group>"; };
-		104CAA9227F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		104CAA9027F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRamp_ATS_SDK___Simple_DemoUITests.swift"; sourceTree = "<group>"; };
+		104CAA9227F7B18900787BC1 /* LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveRamp_ATS_SDK___Simple_DemoUITestsLaunchTests.swift"; sourceTree = "<group>"; };
 		108A6ABA2AF9B826009122DE /* PartnerIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerIdentity.swift; sourceTree = "<group>"; };
 		1D3D2C3C9DC347C60CD66269 /* libPods-LiveRamp ATS SDK - Simple Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiveRamp ATS SDK - Simple Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CC73901678E28CEB4EAB5AD /* libPods-LiveRamp ATS SDK - Simple DemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiveRamp ATS SDK - Simple DemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -596,7 +596,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 74R7MMTVVB;
+				DEVELOPMENT_TEAM = 3LN8244SS8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LiveRamp ATS SDK - Simple Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -625,7 +625,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 74R7MMTVVB;
+				DEVELOPMENT_TEAM = 3LN8244SS8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LiveRamp ATS SDK - Simple Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
