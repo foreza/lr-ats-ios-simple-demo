@@ -120,47 +120,51 @@ class ViewController: UIViewController {
     
     func fetchEnvelopeForEmail(email: String) {
         
-        let lrEmailIdentifier = LREmailIdentifier(email)
-                
-        LRAts.shared.getEnvelope(lrEmailIdentifier) { result, error in
-            
-            if (error != nil) {
-                let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
-                self.updateErrMessage(errMsg: errString)
-            }
-            
-            var displayString = ""
+        var displayString = ""
         
+        
+        Task {
             
-            // Example of how to use envelopes for advertising use cases:
-            if let lr_envelope: String = result?.envelope {
-                print("RampID Envelope: \(lr_envelope)")
+            do {
+                
+                let identifier = LREmailIdentifier(email)
+                let envelope = try await LRAts.shared.getEnvelope(identifier)
+                
+                // Handle Identity Envelopes
+                
+                
+                let lr_envelope = envelope.envelope
+                print("RampID Envelope: \(lr_envelope ?? "noEnvelope")")
                 
                 // TODO: Now, provide the lr_envelope value to your partner(s).
                 // This value expires - by calling `getEnvelope`, you will ensure this value remains relevant.
                 // Do NOT cache this value. It will not be valuable or useful!
                 // You should always be using the most up to date envelope with downstream partners.
                 // More documentation here: https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution
+                setLREnvelopeForPartnerSDKs(envelope: lr_envelope ?? "noEnvelope")
                 
-                // self.setLREnvelopeForPartnerSDKs(envelope: lr_envelope)
+                displayString += "lr_envelope: \(formatStringForDisplay(originalString: lr_envelope ?? "noEnvelope"))"
+                updateErrMessage(errMsg: "")
                 
-                displayString += "lr_envelope: \(self.formatStringForDisplay(originalString: lr_envelope))"
-                self.updateErrMessage(errMsg: "")
-            }
-            
-            
-            // If you are enabled for PairIDs:
-            if let pair_envelope: String = result?.envelope25 {
-                print("Encoded PairIDs: \(pair_envelope)")
-                displayString += "pair_envelope: \(self.formatStringForDisplay(originalString: pair_envelope))"
+                // Handle PairIDs
+                
+                let pair_envelope = envelope.pairSegments
+                print("PairID Segments: \(pair_envelope?.joined(separator: ",") ?? "noPairID")")
+                // Join them together as a string array for display
+                displayString += "pair_envelope: \(formatStringForDisplay(originalString: pair_envelope?.joined(separator: ",") ?? "noPairID"))"
+                
+                
                 // self.setPairIDsForPartnerSDKs(envelope: pair_envelope)
-            } else {
-                print("No PairIDs returned")
+                
+                
+            } catch {
+                let errString = "Couldn't retrieve envelopes. Error: \(error.localizedDescription)"
+                updateErrMessage(errMsg: errString)
             }
             
-            self.updateDisplayString(envelopeString: displayString)
+            updateDisplayString(envelopeString: displayString)
+            
         }
-        
     }
 
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101D78672C6EFD3F00B23FF6 /* PairIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D78662C6EFD3F00B23FF6 /* PairIdentity.swift */; };
+		101D786A2C6EFDB300B23FF6 /* PubmaticOWProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D78692C6EFDB300B23FF6 /* PubmaticOWProvider.swift */; };
 		1043EC57286E3DB300455EE0 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1043EC56286E3DB300455EE0 /* AppTrackingTransparency.framework */; };
 		104CAA7027F7B18700787BC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA6F27F7B18700787BC1 /* AppDelegate.swift */; };
 		104CAA7227F7B18700787BC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA7127F7B18700787BC1 /* SceneDelegate.swift */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		027A3E79A9BC949E697CC47E /* Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig"; sourceTree = "<group>"; };
+		101D78662C6EFD3F00B23FF6 /* PairIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairIdentity.swift; sourceTree = "<group>"; };
+		101D78692C6EFDB300B23FF6 /* PubmaticOWProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubmaticOWProvider.swift; sourceTree = "<group>"; };
 		1043EC56286E3DB300455EE0 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		104CAA6C27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		104CAA6F27F7B18700787BC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101D78682C6EFD9700B23FF6 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				101D78692C6EFDB300B23FF6 /* PubmaticOWProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
 		104CAA6327F7B18700787BC1 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +133,7 @@
 		104CAA6E27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo */ = {
 			isa = PBXGroup;
 			children = (
+				101D78682C6EFD9700B23FF6 /* Providers */,
 				104CAA6F27F7B18700787BC1 /* AppDelegate.swift */,
 				104CAA7127F7B18700787BC1 /* SceneDelegate.swift */,
 				104CAA7327F7B18700787BC1 /* ViewController.swift */,
@@ -129,6 +142,7 @@
 				104CAA7A27F7B18900787BC1 /* LaunchScreen.storyboard */,
 				104CAA7D27F7B18900787BC1 /* Info.plist */,
 				108A6ABA2AF9B826009122DE /* PartnerIdentity.swift */,
+				101D78662C6EFD3F00B23FF6 /* PairIdentity.swift */,
 			);
 			path = "LiveRamp ATS SDK - Simple Demo";
 			sourceTree = "<group>";
@@ -186,6 +200,7 @@
 				104CAA6927F7B18700787BC1 /* Frameworks */,
 				104CAA6A27F7B18700787BC1 /* Resources */,
 				F04F9FB55466275DA34B47A3 /* [CP] Embed Pods Frameworks */,
+				B1EFE78B5D8E13EBD2D70516 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,6 +239,7 @@
 				104CAA8927F7B18900787BC1 /* Frameworks */,
 				104CAA8A27F7B18900787BC1 /* Resources */,
 				EB75B78F46F327F5A161FC2D /* [CP] Embed Pods Frameworks */,
+				A3FA91298EDE2388BD940206 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -328,6 +344,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A3FA91298EDE2388BD940206 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests/Pods-LiveRamp ATS SDK - Simple Demo-LiveRamp ATS SDK - Simple DemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1EFE78B5D8E13EBD2D70516 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BD0AC65F31D2CFBD26DB965B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +464,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				104CAA7427F7B18700787BC1 /* ViewController.swift in Sources */,
+				101D786A2C6EFDB300B23FF6 /* PubmaticOWProvider.swift in Sources */,
+				101D78672C6EFD3F00B23FF6 /* PairIdentity.swift in Sources */,
 				104CAA7027F7B18700787BC1 /* AppDelegate.swift in Sources */,
 				108A6ABB2AF9B826009122DE /* PartnerIdentity.swift in Sources */,
 				104CAA7227F7B18700787BC1 /* SceneDelegate.swift in Sources */,
