@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     // TODO: Replace the init appID with your own app ID
     // DO NOT use this in production - it will cause you monetization issues.
-     let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
+     let appId = "aee4bd35-6159-466b-a34f-1fbb36ac501c"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +35,10 @@ class ViewController: UIViewController {
         // initializeATSSDK();
         setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
         
-        // Sample Setup
+        // Sample Setup of Ad SDKs
         setupPubmaticOW()
+        setupNimbus()
+        setupPrebid()
     }
     
     
@@ -104,6 +106,7 @@ class ViewController: UIViewController {
      
         // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
         let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false);
+    
 
             LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
             if success {
@@ -164,7 +167,11 @@ class ViewController: UIViewController {
             }
             
             
+            // TEST: Make sample requests
             makePubmaticOWRequest()
+            makeNimbusRequest(controller: self)
+            makePrebidRequest(controller: self)
+            
             updateErrMessage(errMsg: "")
             updateDisplayString(envelopeString: displayString)
             

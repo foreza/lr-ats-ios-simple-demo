@@ -38,6 +38,10 @@ func setLREnvelopeForPrebid(envelope: String) {
 //        ExternalUserId(source: "liveramp.com", identifier: envelope))
 //
 //    Prebid.shared.externalUserIdArray = externalUserIdArray
+  
+    
+    Targeting.shared.storeExternalUserId(ExternalUserId(source: "liveramp.com", identifier: envelope))
+
     
     // TODO: Do a sample Prebid ad request to validate
 }
@@ -61,7 +65,7 @@ func setLREnvelopeForInMobi(envelope: String) {
 // https://community.pubmatic.com/display/IOPO/Advanced+topics#Advancedtopics-UserIdentity(DataPartnerIDs)
 // This ensures all subsequent ad requests to Pubmatic OpenWrap contain the RampID envelope.
 func setLREnvelopeForPubmaticOW(envelope: String){
-    var userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
+    let userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
     OpenWrapSDK.addExternalUserId(userId)
 }
 
@@ -71,9 +75,9 @@ func setLREnvelopeForPubmaticOW(envelope: String){
 // https://docs.adsbynimbus.com/docs/sdk/ios/extensions/liveramp#setup
 func setLREnvelopeForNimbus(envelope: String){
     
-//    var extendedId = NimbusExtendedId(source: "liveramp.com", id: envelope)
-//    extendedId.extensions = ["rtiPartner": NimbusCodable("idl")]
-//    NimbusAdManager.extendedIds = [extendedId]
+    var extendedId = NimbusExtendedId(source: "liveramp.com", id: envelope)
+    extendedId.extensions = ["rtiPartner": NimbusCodable("idl")]
+    NimbusAdManager.extendedIds = [extendedId]
     
     // TODO: Do a sample Nimbus ad request to validate
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		101D78672C6EFD3F00B23FF6 /* PairIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D78662C6EFD3F00B23FF6 /* PairIdentity.swift */; };
 		101D786A2C6EFDB300B23FF6 /* PubmaticOWProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D78692C6EFDB300B23FF6 /* PubmaticOWProvider.swift */; };
+		101D786C2C6F25F000B23FF6 /* NimbusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D786B2C6F25F000B23FF6 /* NimbusProvider.swift */; };
+		101D786E2C6F2FE500B23FF6 /* PrebidProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D786D2C6F2FE500B23FF6 /* PrebidProvider.swift */; };
 		1043EC57286E3DB300455EE0 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1043EC56286E3DB300455EE0 /* AppTrackingTransparency.framework */; };
 		104CAA7027F7B18700787BC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA6F27F7B18700787BC1 /* AppDelegate.swift */; };
 		104CAA7227F7B18700787BC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104CAA7127F7B18700787BC1 /* SceneDelegate.swift */; };
@@ -46,6 +48,8 @@
 		027A3E79A9BC949E697CC47E /* Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig"; path = "Target Support Files/Pods-LiveRamp ATS SDK - Simple Demo/Pods-LiveRamp ATS SDK - Simple Demo.release.xcconfig"; sourceTree = "<group>"; };
 		101D78662C6EFD3F00B23FF6 /* PairIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairIdentity.swift; sourceTree = "<group>"; };
 		101D78692C6EFDB300B23FF6 /* PubmaticOWProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubmaticOWProvider.swift; sourceTree = "<group>"; };
+		101D786B2C6F25F000B23FF6 /* NimbusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimbusProvider.swift; sourceTree = "<group>"; };
+		101D786D2C6F2FE500B23FF6 /* PrebidProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidProvider.swift; sourceTree = "<group>"; };
 		1043EC56286E3DB300455EE0 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		104CAA6C27F7B18700787BC1 /* LiveRamp ATS SDK - Simple Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LiveRamp ATS SDK - Simple Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		104CAA6F27F7B18700787BC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				101D78692C6EFDB300B23FF6 /* PubmaticOWProvider.swift */,
+				101D786B2C6F25F000B23FF6 /* NimbusProvider.swift */,
+				101D786D2C6F2FE500B23FF6 /* PrebidProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -463,11 +469,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				101D786E2C6F2FE500B23FF6 /* PrebidProvider.swift in Sources */,
 				104CAA7427F7B18700787BC1 /* ViewController.swift in Sources */,
 				101D786A2C6EFDB300B23FF6 /* PubmaticOWProvider.swift in Sources */,
 				101D78672C6EFD3F00B23FF6 /* PairIdentity.swift in Sources */,
 				104CAA7027F7B18700787BC1 /* AppDelegate.swift in Sources */,
 				108A6ABB2AF9B826009122DE /* PartnerIdentity.swift in Sources */,
+				101D786C2C6F25F000B23FF6 /* NimbusProvider.swift in Sources */,
 				104CAA7227F7B18700787BC1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
