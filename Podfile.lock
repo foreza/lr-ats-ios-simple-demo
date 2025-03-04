@@ -1,24 +1,59 @@
 PODS:
-  - Google-Mobile-Ads-SDK (11.5.0):
+  - Google-Mobile-Ads-SDK (12.1.0):
     - GoogleUserMessagingPlatform (>= 1.1)
-  - GoogleUserMessagingPlatform (2.4.0)
-  - LRAtsSDK (2.5.0)
+  - GoogleAds-IMA-iOS-SDK (3.24.0)
+  - GoogleUserMessagingPlatform (2.7.0)
+  - LRAtsSDK (2.9.0)
+  - NimbusSDK/NimbusCoreKit (2.25.5)
+  - NimbusSDK/NimbusKit (2.25.5):
+    - NimbusSDK/NimbusRenderKit
+    - NimbusSDK/NimbusRenderStaticKit
+    - NimbusSDK/NimbusRenderVideoKit
+    - NimbusSDK/NimbusRequestKit
+  - NimbusSDK/NimbusRenderKit (2.25.5):
+    - NimbusSDK/NimbusCoreKit
+  - NimbusSDK/NimbusRenderStaticKit (2.25.5):
+    - NimbusSDK/NimbusRenderKit
+  - NimbusSDK/NimbusRenderVideoKit (2.25.5):
+    - GoogleAds-IMA-iOS-SDK (>= 3.18.4)
+    - NimbusSDK/NimbusRenderKit
+  - NimbusSDK/NimbusRequestKit (2.25.5):
+    - NimbusSDK/NimbusCoreKit
+  - OpenWrapSDK (4.4.0):
+    - OpenWrapSDK/OpenWrap (= 4.4.0)
+  - OpenWrapSDK/OpenWrap (4.4.0)
+  - PrebidMobile (2.4.0):
+    - PrebidMobile/core (= 2.4.0)
+  - PrebidMobile/core (2.4.0)
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
-  - LRAtsSDK (= 2.5.0)
+  - LRAtsSDK
+  - NimbusSDK/NimbusKit
+  - NimbusSDK/NimbusRenderStaticKit
+  - NimbusSDK/NimbusRenderVideoKit
+  - OpenWrapSDK
+  - PrebidMobile
 
 SPEC REPOS:
   trunk:
     - Google-Mobile-Ads-SDK
+    - GoogleAds-IMA-iOS-SDK
     - GoogleUserMessagingPlatform
     - LRAtsSDK
+    - NimbusSDK
+    - OpenWrapSDK
+    - PrebidMobile
 
 SPEC CHECKSUMS:
-  Google-Mobile-Ads-SDK: 7db2098033ad3bfcd72a11e7503b49700a93029e
-  GoogleUserMessagingPlatform: f131fa7978d2ba88d7426702b057c2cc318e6595
-  LRAtsSDK: 3964c36a450bc66873bb3c20bb5605e2032dc3b8
+  Google-Mobile-Ads-SDK: c9e5722cac79b39241d13b911f9f1eb21bdd0802
+  GoogleAds-IMA-iOS-SDK: bf4dc86b31a1d1b27021008200bbeb6faa689901
+  GoogleUserMessagingPlatform: a8b56893477f67212fbc8411c139e61d463349f5
+  LRAtsSDK: 28dacb70b513a2fbc99cd58efd94436ee6b560e7
+  NimbusSDK: 707ec26890c3029f3bc70f68de40f48d2ab78191
+  OpenWrapSDK: 70a433086186431c0eb2029ad049bc2175bfd3b5
+  PrebidMobile: cad263381f04c99e7be8311155cf32a707afe442
 
-PODFILE CHECKSUM: 2f57c37391c42f896ff3f31fab42fb106e1c38b9
+PODFILE CHECKSUM: e0aea21b54288bb6b75ffddd2e562ab21a53ee6d
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

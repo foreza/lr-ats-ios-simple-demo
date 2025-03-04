@@ -22,14 +22,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_envelopeValue: UILabel!
     @IBOutlet weak var label_emailValue: UITextField!
     
-    var bannerView: GADBannerView!
+    var bannerView: BannerView!
 
     
     // TODO: Replace the init appID with your own app ID
     // DO NOT use this in production - it will cause you monetization issues.
-//     let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
-    
-    let atsd_test_appID = "6aebc913-81ed-43cf-98f1-ddab49423f3d"; // Test ATS Direct
+    let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
+    let bloomApiKey = "0226Ae8c61cE03d0DDba71EaddB0D5CE"
 
     
     override func viewDidLoad() {
@@ -43,15 +42,23 @@ class ViewController: UIViewController {
         setTestConsent();           // To enable ease of testing. Ensure consent is set before initializing the LR ATS SDK
         
         
+        // Sample Setup of Ad SDKs (Testing programmatic supply paths)
+        setupPubmaticOW()
+        setupNimbus()
+        setupPrebid()
+        
         // Init GMA on start
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        // GADMobileAds.sharedInstance().start(completionHandler: nil)
+        MobileAds.shared.start()
         
         let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
 
-          let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
-          bannerView = GADBannerView(adSize: GADAdSizeMediumRectangle)
+        let adaptiveSize = currentOrientationAnchoredAdaptiveBanner(width: viewWidth)
+        bannerView = BannerView(adSize: AdSizeMediumRectangle)
     }
     
+    
+    // Test showing banners
     func requestAndShowBanner(){
         
         bannerView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +83,7 @@ class ViewController: UIViewController {
         bannerView.adUnitID = "/22794602900/ats-direct-v2-demo"
         bannerView.rootViewController = self
         
-        let request = GAMRequest()
+        let request = AdManagerRequest()
         request.customTargeting = [atsdTargetingKey : getATSDirectKeyValues().joined(separator: ",")];
 
         bannerView.load(request)
@@ -118,37 +125,32 @@ class ViewController: UIViewController {
     func setTestConsent() {
         
         // Your CMP SDK should be responsible for setting these values.
-        let tcfString = "CPKZ42oPKZ5YtADABCENBlCgAP_AAAAAAAAAAwwAQAwgDDABADCAAA.YAAAAAAAA4AA"
-        let expectedPurposesConsent = "1111111111"
-        let expectedVendorsConsent = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
-        let ccpaString = "1YNY"
+//        let tcfString = "CPKZ42oPKZ5YtADABCENBlCgAP_AAAAAAAAAAwwAQAwgDDABADCAAA.YAAAAAAAA4AA"
+//        let expectedPurposesConsent = "1111111111"
+//        let expectedVendorsConsent = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+//        
         
+        // Testing for Automatic
+        let tcfString = "        CQNLZQAQNLZQAECACAENBeEgAP_AAELAAKiQGTgBxCJUCCFBIGBHAIIEIAgMQBAAQgQAAAIAAQAAAAAAEIgAgAAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAIAABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQABAAAEAAEAgAAAAAIACBk4AIAgVAABQABAQAAABAAAAEAQAEAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQAABAAAAIAAAAAAAAgAAAAA"
+        let expectedPurposesConsent = "111111111100000000000000"
+        let expectedVendorsConsent = "000000000111000100001000100101010000001000001000010100000100100000011000000100011100000000100000100000010000100000000010000000110001000000000100000000000001000010000001000000000000000000000000100000000000000001000000000000000000000000000000000000000000010000100010000000000010000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000100000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010001000000000000000100000000000000000000010000000000000000010000000010000000000000000000000000000000000000100000000000001"
+        
+        
+
+        
+        // let ccpaString = "1YNY"
+        
+        
+    
         // Required for GDPR if EU
          UserDefaults.standard.set(tcfString, forKey: "IABTCF_TCString")
          UserDefaults.standard.set(expectedPurposesConsent, forKey: "IABTCF_PurposeConsents")
          UserDefaults.standard.set(expectedVendorsConsent, forKey: "IABTCF_VendorConsents")
         
         // Required for CCPA if US
-        UserDefaults.standard.set(ccpaString, forKey:"IABUSPrivacy_String");
+        // UserDefaults.standard.set(ccpaString, forKey:"IABUSPrivacy_String");
     }
     
-    
-    func initializeATSSDKTest1() {
-        LRAts.shared.hasConsentForNoLegislation = true
-                
-        let lrAtsConfiguration = LRAtsConfiguration(configID: atsd_test_appID)
-
-            LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
-            if success {
-                print("LiveRamp ATS SDK is again Ready!")
-                self.fetchEnvelopeForEmail(email: "jasonthechiu@gmail.com")
-            } else {
-                let errString = error?.localizedDescription
-                print("Failed to init SDK with error", errString ?? "")
-            }
-        }
-    
-    }
         
     
     func initializeATSSDK() {
@@ -163,11 +165,11 @@ class ViewController: UIViewController {
             LRAts.shared.hasConsentForNoLegislation = true
         }
      
-        // Provide just the appId - optional arg for isTestMode (by default, it'll be false)
-        // Note: This constructor will be deprecated - swap appID - configID!
-        // let lrAtsConfiguration = LRAtsConfiguration(appId: appId, isTestMode: false);
+
+        // let lrAtsConfiguration = LRAtsConfiguration(configID: appId)
         
-        let lrAtsConfiguration = LRAtsConfiguration(configID: atsd_test_appID)
+        let lrAtsConfiguration = LRAtsConfiguration(configID: appId, apiKey: bloomApiKey)
+    
 
             LRAts.shared.initialize(with: lrAtsConfiguration) { success, error in
             if success {
@@ -187,71 +189,61 @@ class ViewController: UIViewController {
     
     func fetchEnvelopeForEmail(email: String) {
         
-        let lrEmailIdentifier = LREmailIdentifier(email)
-                
-        LRAts.shared.getEnvelope(lrEmailIdentifier) { result, error in
-            
-            if (error != nil) {
-                let errString = "Couldn't retrieve envelope. Error: \(error?.localizedDescription)"
-                self.updateErrMessage(errMsg: errString)
-            }
-            
-            var displayString = ""
+        var displayString = ""
         
+        
+        Task {
             
-            // Example of how to use envelopes for advertising use cases:
-            if let lr_envelope: String = result?.envelope {
-                print("RampID Envelope: \(lr_envelope)")
+            do {
+                
+                let identifier = LREmailIdentifier(email)
+                 let envelope = try await LRAts.shared.getEnvelope(identifier)
+                                // Handle Identity Envelopes
+                
+                
+                let lr_envelope = envelope.envelope
+                print("RampID Envelope: \(lr_envelope ?? "noEnvelope")")
                 
                 // TODO: Now, provide the lr_envelope value to your partner(s).
                 // This value expires - by calling `getEnvelope`, you will ensure this value remains relevant.
                 // Do NOT cache this value. It will not be valuable or useful!
                 // You should always be using the most up to date envelope with downstream partners.
                 // More documentation here: https://developers.liveramp.com/authenticatedtraffic-api/docs/configure-programmatic-ad-solution
+                setLREnvelopeForPartnerSDKs(envelope: lr_envelope ?? "noEnvelope")
                 
-                // self.setLREnvelopeForPartnerSDKs(envelope: lr_envelope)
+                displayString += "lr_envelope: \(formatStringForDisplay(originalString: lr_envelope ?? "noEnvelope"))"
                 
-                displayString += "lr_envelope: \(self.formatStringForDisplay(originalString: lr_envelope))"
-                self.updateErrMessage(errMsg: "")
+                // Handle PairIDs
+                
+                let pair_envelope = envelope.pairSegments
+                print("PairID Segments: \(pair_envelope?.joined(separator: ",") ?? "noPairID")")
+                // Join them together as a string array for display
+                displayString += "pair_envelope: \(formatStringForDisplay(originalString: pair_envelope?.joined(separator: ",") ?? "noPairID"))"
+                                
+                setPairIdsForPartnerSDKs(pairIdsArr: pair_envelope ?? [])
+                
+                // Handle ATS Direct
+                
+                let atsd_envelope = envelope.atsDirectSegments
+                print("ATS Direct Segments: \(atsd_envelope?.joined(separator: ",") ?? "noATS_Direct")")
+                setAtsdTargetingValues(values: atsd_envelope ?? [String]())
+                
+                
+            } catch {
+                let errString = "Couldn't retrieve envelopes. Error: \(error.localizedDescription)"
+                updateErrMessage(errMsg: errString)
             }
             
+                    
             
+            // TEST: Make sample requests
+            //            makePubmaticOWRequest()
+            //            makeNimbusRequest(controller: self)
+            //            makePrebidRequest(controller: self)
             
-            // If you are enabled for PairIDs:
-            if let pair_envelope: String = result?.envelope25 {
-                print("Encoded PairIDs: \(pair_envelope)")
-                
-                // Assumption: we can always use result?.pairSegments? if result?.envelope25 exists?
-                // The pairID is the first element in the list, always
-                let pairID = result?.pairSegments?.first
-                
-                displayString += "pair_envelope: \(self.formatStringForDisplay(originalString: pairID ?? "" ))"
-                // self.setPairIDsForPartnerSDKs(envelope: pair_envelope)
-            } else {
-                print("No PairIDs returned")
-            }
-            
-            
-            // If you are enabled for ATS Direct:
-            if let atsdEncodedKeyValues: String = result?.envelope26 {
-                print("Encoded ATSD Keys: \(atsdEncodedKeyValues)")
-                
-                // Assumption: we can always use result?...? if result?... exists?
-                let atsdDecodedKeyValues = result?.atsDirectSegments
-                let atsdDisplayString = atsdDecodedKeyValues?.joined(separator: ",")
-                
-                setAtsdTargetingValues(values: atsdDecodedKeyValues ?? [String]())
-                
-                displayString += "atsd_keys: \(self.formatStringForDisplay(originalString: atsdDisplayString ?? "" ))"
-                // self.setPairIDsForPartnerSDKs(envelope: pair_envelope)
-            } else {
-                print("No PairIDs returned")
-            }
-            
-            
-            self.updateDisplayString(envelopeString: displayString)
+            updateDisplayString(envelopeString: displayString)
+
         }
-        
     }
 
     
@@ -264,16 +256,12 @@ class ViewController: UIViewController {
     
     @IBAction func touchFetchEnvelope(_ sender: Any) {
         let emailValue = label_emailValue.text;
-        fetchEnvelopeForEmail(email: emailValue ?? "atstest@liveramp.com");
+        fetchEnvelopeForEmail(email: emailValue ?? "atstest+20@liveramp.com");
     }
     
     
     @IBAction func touchResetSDK(_ sender: Any) {
         LRAts.shared.resetSDK()             // Call this when the user is logged out!
-        
-        
-        initializeATSSDK()
-        initializeATSSDKTest1()
         
         updateSDKInitStatus(isInitialized: false)
         print("SDK Reset")

@@ -7,11 +7,12 @@
 
 import Foundation
 //
-//import PrebidMobile
+import PrebidMobile
+import OpenWrapSDK
+import NimbusKit
 //import InMobiSDK
-//import OpenWrapSDK
 //import MobileFuseSDK
-//import NimbusKit
+
 
 
 var atsdTargetingValues = [String]() // store ATSD here
@@ -20,11 +21,11 @@ let atsdTargetingKey = "atsd";
 
 func setLREnvelopeForPartnerSDKs(envelope: String) {
     
-    //    setLREnvelopeForPrebid(envelope: envelope)
+        setLREnvelopeForPrebid(envelope: envelope)
+        setLREnvelopeForPubmaticOW(envelope: envelope)
+        setLREnvelopeForNimbus(envelope: envelope)
     //    setLREnvelopeForInMobi(envelope: envelope)
-    //    setLREnvelopeForPubmaticOW(envelope: envelope)
-    //    setLREnvelopeForNimbus(envelope: envelope)
-    //    setLREnvelopeForPubmaticOW(envelope: envelope)
+    //    setLREnvelopeForMobileFuse(envelope: envelope)
     // More partners coming soon!
     // Note: Google Ad Manager is a separate workflow.
     
@@ -42,6 +43,10 @@ func setLREnvelopeForPrebid(envelope: String) {
 //        ExternalUserId(source: "liveramp.com", identifier: envelope))
 //
 //    Prebid.shared.externalUserIdArray = externalUserIdArray
+  
+    
+    Targeting.shared.storeExternalUserId(ExternalUserId(source: "liveramp.com", identifier: envelope))
+
     
     // TODO: Do a sample Prebid ad request to validate
 }
@@ -65,11 +70,8 @@ func setLREnvelopeForInMobi(envelope: String) {
 // https://community.pubmatic.com/display/IOPO/Advanced+topics#Advancedtopics-UserIdentity(DataPartnerIDs)
 // This ensures all subsequent ad requests to Pubmatic OpenWrap contain the RampID envelope.
 func setLREnvelopeForPubmaticOW(envelope: String){
-    
-//    var userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
-//    OpenWrapSDK.addExternalUserId(userId)
-    
-    // TODO: Do a sample OpenWrap ad request to validate
+    let userId = POBExternalUserId(source: "liveramp.com", andId: envelope)
+    OpenWrapSDK.addExternalUserId(userId)
 }
 
 
@@ -78,9 +80,9 @@ func setLREnvelopeForPubmaticOW(envelope: String){
 // https://docs.adsbynimbus.com/docs/sdk/ios/extensions/liveramp#setup
 func setLREnvelopeForNimbus(envelope: String){
     
-//    var extendedId = NimbusExtendedId(source: "liveramp.com", id: envelope)
-//    extendedId.extensions = ["rtiPartner": NimbusCodable("idl")]
-//    NimbusAdManager.extendedIds = [extendedId]
+    var extendedId = NimbusExtendedId(source: "liveramp.com", id: envelope)
+    extendedId.extensions = ["rtiPartner": NimbusCodable("idl")]
+    NimbusAdManager.extendedIds = [extendedId]
     
     // TODO: Do a sample Nimbus ad request to validate
 }
