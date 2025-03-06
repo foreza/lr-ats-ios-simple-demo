@@ -11,7 +11,8 @@ import LRAtsSDK
 import GoogleMobileAds
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, BannerViewDelegate{
+    
 
     
     // View references
@@ -22,7 +23,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var label_envelopeValue: UILabel!
     @IBOutlet weak var label_emailValue: UITextField!
     
-    var bannerView: BannerView!
+    var bannerView: AdManagerBannerView!
+
+    
 
     
     // TODO: Replace the init appID with your own app ID
@@ -51,12 +54,74 @@ class ViewController: UIViewController {
         // GADMobileAds.sharedInstance().start(completionHandler: nil)
         MobileAds.shared.start()
         
+        
         let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
 
         let adaptiveSize = currentOrientationAnchoredAdaptiveBanner(width: viewWidth)
-        bannerView = BannerView(adSize: AdSizeMediumRectangle)
+        bannerView = AdManagerBannerView(adSize: AdSizeMediumRectangle)
+        
+        
+        bannerView.delegate = self
+    
+        
+        
+
     }
     
+    
+    // Section for GAD listeners
+    
+    func bannerViewDidReceiveAd(_ bannerView: BannerView) {
+        print("bannerViewDidReceiveAd!")
+        attemptDebug(ad: bannerView)
+        
+    }
+    
+    func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: Error) {
+      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+//        attemptDebug(ad: bannerView)
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: BannerView) {
+      print("bannerViewDidRecordImpression")
+    }
+
+    func bannerViewWillPresentScreen(_ bannerView: BannerView) {
+      print("bannerViewWillPresentScreen")
+    }
+
+    func bannerViewWillDismissScreen(_ bannerView: BannerView) {
+      print("bannerViewWillDIsmissScreen")
+    }
+
+    func bannerViewDidDismissScreen(_ bannerView: BannerView) {
+      print("bannerViewDidDismissScreen")
+    }
+
+    
+    
+    func attemptDebug(ad: BannerView) {
+        let responseInfo = ad.responseInfo
+        
+//        let responseInfo = ad.responseInfo
+            print("\(String(describing: responseInfo))")
+        
+        let adNetworkInfoArray = responseInfo?.adNetworkInfoArray
+        
+        let myTestDict = adNetworkInfoArray?[0].dictionaryRepresentation
+        
+        let loadedAdNetworkResponseInfo = responseInfo?.loadedAdNetworkResponseInfo
+        
+//        let adNetworkClassName = responseInfo?.adNetworkClassName
+
+        let responseIdentifier = responseInfo?.responseIdentifier
+        let responseDict = responseInfo?.extras
+        
+        
+        print("wow")
+
+        
+    }
     
     // Test showing banners
     func requestAndShowBanner(){
@@ -84,9 +149,20 @@ class ViewController: UIViewController {
         bannerView.rootViewController = self
         
         let request = AdManagerRequest()
+        
         request.customTargeting = [atsdTargetingKey : getATSDirectKeyValues().joined(separator: ",")];
 
+        
         bannerView.load(request)
+        
+        // { (ad, error) in
+//            let responseInfo = ad?.responseInfo
+//
+//            let responseIdentifier = responseInfo?.responseIdentifier
+//            let adNetworkClassName = responseInfo?.adNetworkClassName
+//            let adNetworkInfoArray = responseInfo?.adNetworkInfoArray
+//            let loadedAdNetworkResponseInfo = responseInfo?.loadedAdNetworkResponseInfo
+//          }
     }
     
     
