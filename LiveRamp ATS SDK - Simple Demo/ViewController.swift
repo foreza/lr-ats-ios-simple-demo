@@ -11,7 +11,7 @@ import LRAtsSDK
 import GoogleMobileAds
 
 
-class ViewController: UIViewController, BannerViewDelegate{
+class ViewController: UIViewController, BannerViewDelegate, AppEventDelegate {
     
 
     
@@ -26,13 +26,25 @@ class ViewController: UIViewController, BannerViewDelegate{
     var bannerView: AdManagerBannerView!
 
     
+    
+    
 
     
     // TODO: Replace the init appID with your own app ID
     // DO NOT use this in production - it will cause you monetization issues.
-    let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
+    // let appId = "e47b5b24-f041-4b9f-9467-4744df409e31"
+    let appId = "9fb12afd-5cc8-49c0-9716-2b8dfca21b06" // for ATSD POC
     let bloomApiKey = "0226Ae8c61cE03d0DDba71EaddB0D5CE"
+    
+    // For eCST logging POC
+    var ecst_creativeId = ""
+    var ecst_advertiserId = ""
+    var ecst_campaignId = ""
+    var ecst_lineItemId = ""
+    var ecst_slot = ""
 
+    var atsd_values = [String()]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,68 +72,117 @@ class ViewController: UIViewController, BannerViewDelegate{
         let adaptiveSize = currentOrientationAnchoredAdaptiveBanner(width: viewWidth)
         bannerView = AdManagerBannerView(adSize: AdSizeMediumRectangle)
         
-        
+        bannerView.appEventDelegate = self
         bannerView.delegate = self
-    
-        
-        
-
     }
     
+    
+    func adView(_ banner: BannerView, didReceiveAppEvent name: String, with info: String?) {
+        // The AdManager banner sends app event messages to its app event delegate, this view controller. The
+        // GADAppEventDelegate will be notified when the SDK receives an app event message from the
+        // banner. In this demo, the GADAppEventDelegate method sets the background of this view
+        // controller to match the data that comes in. The banner will send "red" when it loads, "blue"
+        // five seconds later, and "green" if the user taps the banner.
+        //
+        // This is just a demonstration, of course. Your apps can do much more interesting things with
+        // app events.
+        
+        print("didReceiveAppEvent!" + name);
+        
+
+        if name == "color" {
+            guard let infoString = info else { return }
+            switch infoString {
+            case "blue":
+                view.backgroundColor = UIColor.blue
+            case "red":
+                view.backgroundColor = UIColor.red
+            case "green":
+                view.backgroundColor = UIColor.green
+            default:
+                break
+            }
+        }
+        
+        // pick up the varios events we are sending from the creative -
+//            admob.events.dispatchAppEvent("creativeId", creativeId);
+//            admob.events.dispatchAppEvent("advertiserId", creativeId);
+//            admob.events.dispatchAppEvent("campaignId", creativeId);
+//            admob.events.dispatchAppEvent("lineItemId", creativeId);
+//            admob.events.dispatchAppEvent("slot", creativeId);
+        
+        
+        if name == "creativeId" {
+            ecst_creativeId = info ?? "notFound"
+        }
+        
+        if name == "advertiserId" {
+            ecst_advertiserId = info ?? "notFound"
+        }
+        
+        if name == "campaignId" {
+            ecst_campaignId = info ?? "notFound"
+        }
+        
+        if name == "lineItemId" {
+            ecst_lineItemId = info ?? "notFound"
+        }
+        
+        if name == "slot" {
+            ecst_slot = info ?? "notFound"
+        }
+            
+
+            
+    }
+    
+    
+    func fire_eCSTPOC() async {
+        
+        var exampleDataDict = [
+            "creativeId": ecst_creativeId,
+            "advertiserId": ecst_advertiserId,
+            "campaignId": ecst_campaignId,
+            "lineItemId": ecst_lineItemId,
+            "slot": ecst_slot,
+            "isMobileTest": "1"
+        ] as [String : String]
+        
+        
+        
+        for (index, atsd_value) in atsd_values.enumerated() {
+            print("KV \(index): \(atsd_value)")
+            exampleDataDict["atsdealid\(index+1)"] = atsd_value
+        }
+        
+        let ecstData = LReCSTData(jsonDict: exampleDataDict)
+        
+        do {
+            let data = try await LRAts.shared.logeCST(with: ecstData)
+            print("eCST sent: \(data)")
+        } catch {
+            print("Failed to call eCSTR: \(error)")
+               }
+        
+        
+        
+    }
+    
+    
+//    - (void)adView:(nonnull GADBannerView *)banner
+//        didReceiveAppEvent:(nonnull NSString *)name
+//                  withInfo:(nullable NSString *)info NS_SWIFT_NAME(adView(_:didReceiveAppEvent:with:));
+//
+//    /// Called when the interstitial receives an app event.
+//    - (void)interstitialAd:(nonnull GADInterstitialAd *)interstitialAd
+//        didReceiveAppEvent:(nonnull NSString *)name
+//                  withInfo:(nullable NSString *)info NS_SWIFT_NAME(adView(_:didReceiveAppEvent:with:));
+
     
     // Section for GAD listeners
-    
-    func bannerViewDidReceiveAd(_ bannerView: BannerView) {
-        print("bannerViewDidReceiveAd!")
-        attemptDebug(ad: bannerView)
-        
-    }
-    
-    func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: Error) {
-      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-//        attemptDebug(ad: bannerView)
-    }
-
-    func bannerViewDidRecordImpression(_ bannerView: BannerView) {
-      print("bannerViewDidRecordImpression")
-    }
-
-    func bannerViewWillPresentScreen(_ bannerView: BannerView) {
-      print("bannerViewWillPresentScreen")
-    }
-
-    func bannerViewWillDismissScreen(_ bannerView: BannerView) {
-      print("bannerViewWillDIsmissScreen")
-    }
-
-    func bannerViewDidDismissScreen(_ bannerView: BannerView) {
-      print("bannerViewDidDismissScreen")
-    }
 
     
-    
-    func attemptDebug(ad: BannerView) {
-        let responseInfo = ad.responseInfo
-        
-//        let responseInfo = ad.responseInfo
-            print("\(String(describing: responseInfo))")
-        
-        let adNetworkInfoArray = responseInfo?.adNetworkInfoArray
-        
-        let myTestDict = adNetworkInfoArray?[0].dictionaryRepresentation
-        
-        let loadedAdNetworkResponseInfo = responseInfo?.loadedAdNetworkResponseInfo
-        
-//        let adNetworkClassName = responseInfo?.adNetworkClassName
 
-        let responseIdentifier = responseInfo?.responseIdentifier
-        let responseDict = responseInfo?.extras
-        
-        
-        print("wow")
-
-        
-    }
     
     // Test showing banners
     func requestAndShowBanner(){
@@ -154,15 +215,6 @@ class ViewController: UIViewController, BannerViewDelegate{
 
         
         bannerView.load(request)
-        
-        // { (ad, error) in
-//            let responseInfo = ad?.responseInfo
-//
-//            let responseIdentifier = responseInfo?.responseIdentifier
-//            let adNetworkClassName = responseInfo?.adNetworkClassName
-//            let adNetworkInfoArray = responseInfo?.adNetworkInfoArray
-//            let loadedAdNetworkResponseInfo = responseInfo?.loadedAdNetworkResponseInfo
-//          }
     }
     
     
@@ -301,6 +353,7 @@ class ViewController: UIViewController, BannerViewDelegate{
                 // Handle ATS Direct
                 
                 let atsd_envelope = envelope.atsDirectSegments
+                atsd_values = envelope.atsDirectSegments ?? [] // duplicative, just for POC
                 print("ATS Direct Segments: \(atsd_envelope?.joined(separator: ",") ?? "noATS_Direct")")
                 setAtsdTargetingValues(values: atsd_envelope ?? [String]())
                 
@@ -348,6 +401,13 @@ class ViewController: UIViewController, BannerViewDelegate{
     
     
     @IBAction func touchClearAll(_ sender: Any) {
+        
+
+        Task {
+            await self.fire_eCSTPOC()
+        }
+        
+        
         DispatchQueue.main.async {
             self.updateErrMessage(errMsg: "")
             self.label_envelopeValue.text = ""
